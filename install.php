@@ -7,8 +7,8 @@
 </head>
 <body>
 
-<?php // Check if config.php has been created
-
+<?php 
+    // Check if config.php has been created
     if (!file_exists('config.php'))
         die("<p>The file 'config.php' not exists.</p></body></html>");
     include("config.php");
