@@ -25,7 +25,7 @@ $mysql->query("SHOW TABLES FROM ".DB_NAME." LIKE '".$table_prefix."%'");
 <b>Site informations</b><br />
 site name:          <input type="text" name="sitename" /><br />
 admin name:      <input type="text" name="user" /><br />
-admin password:         <input type="password" name="pswd" /><br />
+admin password:         <input type="password" name="passwd" /><br />
 admin email:         <input type="text" name="email" /><br />
 <input type="submit" name="submit" value="Submit" />
 </form>
@@ -37,8 +37,8 @@ elseif($_GET['step'] == 1) {
 	$mysql->query("
 CREATE TABLE `".$table_prefix."users` (
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-`username` VARCHAR(30) NOT NULL,
-`password` CHAR(32) NOT NULL,
+`user` VARCHAR(30) NOT NULL,
+`passwd` CHAR(32) NOT NULL,
 `email` VARCHAR(128) NOT NULL,
  PRIMARY KEY(id),
  INDEX(username, password)
@@ -62,7 +62,7 @@ CREATE TABLE `".$table_prefix."options` (
 ) TYPE = MYISAM ;", $db);
 	$mysql->query("
 INSERT INTO ".$table_prefix."users VALUES (
-NULL,  '".addslashes($_POST['user'])."', '".sha1($_POST['pswd'])."', '".addslashes($_POST['email'])."');
+NULL,  '".addslashes($_POST['user'])."', '".sha1($_POST['passwd'])."', '".addslashes($_POST['email'])."');
 ", $db);
 	$mysql->query("
 INSERT INTO ".$table_prefix."options VALUES (
