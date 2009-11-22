@@ -1,8 +1,8 @@
 0.1
-install process -- 90%
-improve sql queries -- 30%
+install process -- 92%
+improve sql queries -- 40%
 admin panel -- 0%
-user managment(add/del/log-in/log-out and register a user) -- 0%
+user managment(add/del/log-in/log-out and register a user) -- 30%
 content managment(add,edit or del resources like:pages,files etc etc) -- 0%
 make all Google like (mod rewrite) -- 0%
 use more JavaScript!!!! -- 0%

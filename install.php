@@ -7,8 +7,8 @@
 </head>
 <body>
 
-<?php 
-    // Check if config.php has been created
+<?php // Check if config.php has been created
+
     if (!file_exists('config.php'))
         die("<p>The file 'config.php' not exists.</p></body></html>");
     include("config.php");
@@ -26,6 +26,7 @@ $mysql->query("SHOW TABLES FROM ".DB_NAME." LIKE '".$table_prefix."%'");
 site name:          <input type="text" name="sitename" /><br />
 admin name:      <input type="text" name="user" /><br />
 admin password:         <input type="password" name="pswd" /><br />
+admin email:         <input type="text" name="email" /><br />
 <input type="submit" name="submit" value="Submit" />
 </form>
 
@@ -38,6 +39,7 @@ CREATE TABLE `".$table_prefix."users` (
 `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 `username` VARCHAR(30) NOT NULL,
 `password` CHAR(32) NOT NULL,
+`email` VARCHAR(128) NOT NULL,
  PRIMARY KEY(id),
  INDEX(username, password)
 ) TYPE = MYISAM ;");
@@ -60,7 +62,7 @@ CREATE TABLE `".$table_prefix."options` (
 ) TYPE = MYISAM ;", $db);
 	$mysql->query("
 INSERT INTO ".$table_prefix."users VALUES (
-NULL,  '".addslashes($_POST['user'])."', '".sha1($_POST['pswd'])."');
+NULL,  '".addslashes($_POST['user'])."', '".sha1($_POST['pswd'])."', '".addslashes($_POST['email'])."');
 ", $db);
 	$mysql->query("
 INSERT INTO ".$table_prefix."options VALUES (

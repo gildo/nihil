@@ -1,3 +1,8 @@
+2009-11-22  Fyskij  <fyskij@gmail.com>
+* install.php: added emails
+
+* lib/Auth.php: Auth class(Add and Auth users)
+
 2009-11-21  Fyskij  <fyskij@gmail.com>
 
 * install.php: fixed the SQL queries.
