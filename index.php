@@ -1,3 +1,4 @@
+<?php include("models/config.php"); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -19,7 +20,9 @@
 </div>
 
 	 <div style="text-align:center; padding-top:15px;">
-     	<a href="index.php">Home</a> | <a href="login.php">Login</a> | <a href="forgot-password.php">Forgot Password</a> | <a href="register.php">Register</a>
+     	<a href="index.php">Home</a> | <?php if(!isUserLoggedIn()) { print('<a href="login.php">Login</a> | <a href="forgot-password.php">Forgot Password</a> | <a href="register.php">Register</a>');} if(isUserLoggedIn()) {
+     	print('<a href="account.php">Account</a> | <a href="logout.php">Log Out</a>'); }
+     	 ?>
      </div>
 
 </div>
