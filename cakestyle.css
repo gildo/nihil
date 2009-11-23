@@ -1,0 +1,84 @@
+html, body {
+	margin: 0px;
+	background: #e7e7e7;
+	font:14px Verdana, Arial, Helvetica, sans-serif;
+	color:#4d4948;
+}
+
+h1 {
+	font-size:250%;
+	margin:0px;
+	padding:0px;
+}
+
+a {
+	color:#4d4948;
+}
+
+#wrapper {
+	width: 350px;
+	margin-right: auto;
+    margin-left: auto;
+	margin-top: 50px;
+}
+
+#wrapper  #logo {
+	background:url('layout/usercake-logo.jpg') no-repeat;
+	width:202px;
+	height:168px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#wrapper #errors {
+	margin-top:15px;
+	color:#4d4948;
+	background-color:#ecf39e;
+	border: 1px solid #FF0000;
+}
+
+#wrapper #success {
+	margin-top:15px;
+	color:#4d4948;
+	background-color:#bce9b5;
+	border: 1px solid #7ace6c;
+	text-align:center;
+}
+
+
+#wrapper #errors  ol li {
+	padding-top:10px;
+}
+
+#wrapper #regbox {
+	margin-top:15px;
+	padding-top:15px;
+	padding-bottom:15px;
+	color:#4d4948;
+	background-color:#e2e2e1;
+	border: 1px solid #9a9a9a;
+}
+
+form {
+	margin-top:15px;
+}
+
+label
+{
+	width:100px;
+	float: left;
+	text-align: right;
+	margin-right: 10px;
+	font-weight:bold;
+	display: block;
+}
+
+input {
+	font-size:150%;
+}
+
+.submit 
+{
+	margin-top:10px;
+	margin-left: 110px;
+} 

@@ -1,0 +1,11 @@
+<p>Hello #USERNAME#</p>
+
+<p>Thank you for joining our website <p>#WEBSITENAME#</p>
+
+
+<p>#ACTIVATION-MESSAGE</p>
+
+
+
+
+#INC-FOOTER#
