@@ -1,6 +1,4 @@
-<?php
-require_once("loader.php");
-?>
+<?php require_once("loader.php"); ?>
 
 
 
