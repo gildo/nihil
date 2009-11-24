@@ -2,20 +2,20 @@
 	include("settings.php");
 	
 	//Dbal Support - Thanks phpBB ; )
-	include('classes/db/'.$dbtype.'.php');
+	include('models/classes/db/'.$dbtype.'.php');
 	
 	//Construct a db instance
 	$db = new $sql_db();
 	if(!$db->sql_connect($db_host, $db_user, $db_pass, $db_name, $db_port, false, false)) die("Unable to connect to the database");
 
 	//Include classes
-	include('classes/class_newuser.php');
-	include('classes/class_newmail.php');
-	include('classes/class_loggedinuser.php');
+	include('models/classes/class_newuser.php');
+	include('models/classes/class_newmail.php');
+	include('models/classes/class_loggedinuser.php');
 	
 	//Include Functions
-	include('functions/user-funcs.php');
-	include('functions/general-funcs.php');
+	include('models/functions/user-funcs.php');
+	include('models/functions/general-funcs.php');
 
 
 	session_start();

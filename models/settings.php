@@ -9,6 +9,9 @@
 	//General Settings
 	//--------------------------------------------------------------------------
 	
+	//Comment, delete or set to NULL this var
+    $UNCONFIGURED = NULL;
+	
 	//Database Information
 	$dbtype = ""; 
 	$db_host = "localhost";

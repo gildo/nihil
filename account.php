@@ -43,7 +43,7 @@
   <?php
   $group = $loggedInUser->groupID();
   if ($group['Group_ID'] == 1 )  {
-      print('<p><a href="add_groups.php">Add Groups</a></p>') ;
+      print('<p><a href="add-groups.php">Add Groups</a></p>') ;
   }
   ?>
             <p>I am a <strong><?php  $group = $loggedInUser->groupID(); echo $group['Group_Name']; ?></strong></p>
