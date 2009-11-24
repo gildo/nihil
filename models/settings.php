@@ -10,7 +10,7 @@
 	//--------------------------------------------------------------------------
 	
 	//Comment, delete or set to NULL this var
-    $UNCONFIGURED = NULL;
+    $UNCONFIGURED = TRUE;
 	
 	//Database Information
 	$dbtype = ""; 
