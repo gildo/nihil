@@ -4,3 +4,12 @@ ChangeLog~
 TODO~
 install.php~
 admin
+account.php~
+activate-account.php~
+change-password.php~
+forgot-password.php~
+index.php~
+login.php~
+loader.php~
+register.php~
+update-contact-details.php~
