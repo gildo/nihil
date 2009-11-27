@@ -13,7 +13,7 @@
     $UNCONFIGURED = TRUE;
 	
 	//Database Information
-	$dbtype = ""; 
+	$dbtype = "mysql"; 
 	$db_host = "localhost";
 	$db_user = "root";
 	$db_pass = "";
