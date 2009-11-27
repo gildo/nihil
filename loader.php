@@ -1,5 +1,5 @@
 <?php
-require("models/config.php");
+require_once("models/config.php");
 
 if (isset($UNCONFIGURED))
     { die ("Monkey, read first the settings.php file"); }
