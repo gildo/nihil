@@ -67,28 +67,29 @@
     case "post_blog":
     
     		if (admin_exists ())
-		{
-			if (is_logged () && login (mysql_real_escape_string ($_COOKIE ['_user']), mysql_real_escape_string ($_COOKIE ['_pass'])))
-			{
-                print "<form action = 'admin.php?mode=post_blog' method = 'POST'>";
-                print "Author: <input type = 'text' name = 'author'><br>";
-                print "Name: <input type = 'text' name = 'name'><br>";
-				print "<textarea name = 'post' rows = '55' cols = '95'></textarea><br>";
-				print "<input type = 'submit' value = 'post'>";
-				print "</form>";	
-   				if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['post']) )
-				{
-    				$author = clearRequest ('author');
-    				$post = clearRequest ('post');
-    				$name = clearRequest ('name');
-                    $date = date ("d:m:y");
-                    $hour = date ("H:i:s");
-                    $query = "insert into blog(author,name,post,hour,date) values('$author','$name','$post','$hour','$date')";
-                    $mysql->query ($query) or die ("Errore nell'esecuzione della query");
+		    {
+			
+    			if (is_logged () && login (mysql_real_escape_string ($_COOKIE ['_user']), mysql_real_escape_string ($_COOKIE ['_pass'])))
+    			{
+                    print "<form action = 'admin.php?mode=post_blog' method = 'POST'>";
+                    print "Author: <input type = 'text' name = 'author'><br>";
+                    print "Name: <input type = 'text' name = 'name'><br>";
+    				print "<textarea name = 'post' rows = '55' cols = '95'></textarea><br>";
+    				print "<input type = 'submit' value = 'post'>";
+    				print "</form>";	
+       				if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['post']) )
+    				{
+        				$author = clearRequest ('author');
+        				$post = clearRequest ('post');
+        				$name = clearRequest ('name');
+                        $date = date ("d:m:y");
+                        $hour = date ("H:i:s");
+                        $query = "insert into blog(author,name,post,hour,date) values('$author','$name','$post','$hour','$date')";
+                        $mysql->query ($query) or die ("Errore nell'esecuzione della query");
 
+                    }
                 }
             }
-        }
                                 break;
     case "post":
 		if (admin_exists ())
@@ -225,7 +226,7 @@
 					$query = "UPDATE `blog` SET `name` = '{$name}', `author` = '{$author}', `post` = '{$post}' WHERE `id` = '{$id}'";
 					$mysql->query ($query);
 					print "Done<br>";
-				}
+			    }
 			}
 			else
 				header ("Location: index.php");
@@ -241,4 +242,4 @@
 		
 
 			
-}
+    }
