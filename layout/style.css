@@ -39,16 +39,16 @@ body {
 
 #container {
     background-color: #171717;
-/*    border: solid 1px #1f1f1f;*/
-/*    margin-left: auto;*/
-/*    margin-right: auto;*/
+    border: solid 1px #1f1f1f;
+    margin-left: auto;
+    margin-right: auto;
 /*    margin-top: 50px;*/
-/*    width: 780px;*/
-/*    padding: 6px;*/
-/*    padding-left: 3px;*/
-/*    padding-right: 3px;*/
-/*    text-align: justify;*/
-/*    float: button;*/
+    width: 780px;
+    padding: 6px;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-align: justify;
+    float: button;
 }
 
 #head {

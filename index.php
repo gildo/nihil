@@ -1,6 +1,6 @@
 <?php
 
-    error_reporting(0);
+    //error_reporting(0);
     require('layout/header.php');
 
 
@@ -94,8 +94,7 @@
 
 ?>
 
-<div id="body">
-<div class="blog">
+
         
 
 
@@ -109,26 +108,26 @@
     	if (is_logged () && login (mysql_real_escape_string ($_COOKIE ['_user']),mysql_real_escape_string ($_COOKIE ['_pass'])))
     	
     	        print("
-        	       <div id='{$res ['id']}' class='post'>
-                   <div class='header'>
-                   <span class='title'> <tr>\n<td> <a href = 'post-{$res ['id']}'>#{$res ['name']}</a>
-                   </tr> posted by '{$res ['author']}' at '{$res ['hour']}' of {$res ['date']} <td>
-                   <a href = 'admin.php?mode=delete_post&id={$res ['id']}'>rm</a>
-                   <td><a href = 'admin.php?mode=edit_post&id={$res ['id']}'>edit</a></td>
-                   </span> <div style='float: right;'></div>
-                   </div>
+        	        <div id='{$res ['id']}' class='post'>
+                    <div class='header'>
+                    <span class='title'> <tr>\n<td> <a href = 'post-{$res ['id']}'>#{$res ['name']}</a>
+                    </tr> posted by '{$res ['author']}' at '{$res ['hour']}' of {$res ['date']} <td>
+                    <a href = 'admin.php?mode=delete_post&id={$res ['id']}'>rm</a>
+                    <td><a href = 'admin.php?mode=edit_post&id={$res ['id']}'>edit</a></td>
+                    </span> <div style='float: right;'></div>
+                    </div>
                 ");
 
     	else
     	{
-            print("
-                <div id='{$res ['id']}' class='post'>
-                <div class='header'>
-                <span class='title'> <tr>\n<td> <a href = 'post-{$res ['id']}'>#{$res ['name']}</a>
-                </tr> posted by '{$res ['author']}' at '{$res ['hour']}' of {$res ['date']} </span>
-                <div style='float: right;'></div>
-                </div>
-            ");
+                print("
+                    <div id='{$res ['id']}' class='post'>
+                    <div class='header'>
+                    <span class='title'> <tr>\n<td> <a href = 'post-{$res ['id']}'>#{$res ['name']}</a>
+                    </tr> posted by '{$res ['author']}' at '{$res ['hour']}' of {$res ['date']} </span>
+                    <div style='float: right;'></div>
+                    </div>
+                ");
         }
     }
 ?>
@@ -136,6 +135,6 @@
 <div class="content">
 </div>
 
-<?php      
+<?php
        require_once('layout/footer.php');
 ?>

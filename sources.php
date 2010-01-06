@@ -32,17 +32,6 @@
     
 ?>
 
-    <div id="body">
-
-        <div class="blog">
-            
-        <div class="page">
-            
-        <div id="2" class="post">
-            <div class="header">
-                <span class="title">sources...</span> <div style="float: right;"></div>
-            </div>
-            <div class="content">    
     <table><tr></br><td>Script</td></br><td>Language</td></br></tr></br>
 <?php
     if (admin_exists ())

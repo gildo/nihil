@@ -2,9 +2,9 @@
     
     /* DB Configuration */
 
-	define('user', 'minimo');
-	define('pass', 'min');
-    define('host', 'localhost');
+	define('user', 'd');
+	define('pass', 'ds');
+    define('host', 'ds');
 	define('db', 'min');
 
     /* Site configuration */
