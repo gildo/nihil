@@ -25,6 +25,29 @@
     $username = mysql_real_escape_string ($_COOKIE ['_user']);
     $password = mysql_real_escape_string ($_COOKIE ['_pass']);
 
+	if (!admin_exists ())
+    	{
+			print "<form action = 'admin.php?mode=register_admin' method = 'POST'>";
+			print "Name: <input type = 'text' name = 'user'><br>";
+			print "Password: <input type = 'password' name = 'pass'><br>";
+			print "Retype password: <input type = 'password' name = 'pass2'><br>";
+			print "<input type = 'submit' value = 'Register>";
+			print "</form>";
+			if (!empty ($_REQUEST ['user']) && !empty ($_REQUEST ['pass']) && !empty ($_REQUEST ['pass2']))
+			{
+				$name = clearRequest ('user');
+				$pass1 = clearRequest ('pass');
+				$pass2 = clearRequest ('pass2');
+ 
+				if ($pass1 == $pass2)
+				{
+					$query = "INSERT INTO `users` (`admin` , `password`) VALUES ('{$name}', '{$pass1}')";
+					$mysql->query ($query);
+					print "Done<br>";
+				}
+			}
+		}
+
 ?>
 <div style="top: 52.5px; left: 126px;" id="container">
 
