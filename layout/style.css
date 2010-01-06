@@ -80,7 +80,7 @@ body {
 #head div.menu {
     background-color: #171717;
     position: relative;
-    border: 3px solid #1f1f1f;
+    border: 1px solid #1f1f1f;
     float: left;
     margin-right: 5px;
     text-align: left;
@@ -138,5 +138,3 @@ body {
 .hidden {
     display: none;
 }
-
-

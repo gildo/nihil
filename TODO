@@ -1,13 +1,12 @@
-
 0.1
 Rewrite from scratch
-install process -- 100%
-improve sql queries -- 100%
-admin panel -- 10%
-user managment(add/del/log-in/log-out and register a user) -- 90% (now UserCake based!)
-content managment(add,edit or del resources like:pages,files etc etc) -- 0%
-make all Google like (mod rewrite) -- 0%
-use more JavaScript!!!! -- 0%
+-install process -- 100%
+-improve sql queries -- 100%
+-admin panel -- 50%
+-user managment(add/del/log-in/log-out and register a user) -- 90%
+-content managment(add,edit or del resources like:pages,files etc etc) -- 70%
+-make all Google like (mod rewrite) -- 100%
+-use more JavaScript!!!! -- 10%
 
 0.2 release date (DD,MM,YYYY): 37/15/2059 :)
-modules (plugins, addons, etc etc etc)
+-modules (plugins, addons, etc etc etc)
