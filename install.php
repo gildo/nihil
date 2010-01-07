@@ -8,7 +8,7 @@
     include("lib/MySQL.php");
  
     //Check if the db tables exists
-    $mysql = new MysqlClass();
+    $mysql = new MySQL();
     
     $mysql->connect();
     
