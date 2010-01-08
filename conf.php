@@ -1,13 +1,13 @@
 <?php
-    
+
     /* DB Configuration */
 
-	define('user', 'd');
-	define('pass', 'ds');
-    define('host', 'ds');
-	define('db', 'min');
+	$user = "root";
+	$pass = "s";
+    $host = "sa";
+	$db = "min";
 
     /* Site configuration */
     $sitename = "fyskij";
-    
+
 ?>

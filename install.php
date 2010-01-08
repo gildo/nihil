@@ -1,23 +1,23 @@
 <?php
      // Check if config.php has been created
- 
+
     if (!file_exists('conf.php')) {
         die("<p>The file 'config.php' not exists.</p></body></html>"); }
-    
+
     include("conf.php");
     include("lib/MySQL.php");
- 
+
     //Check if the db tables exists
     $mysql = new MySQL();
-    
-    $mysql->connect();
-    
+
+    $mysql->connect($host, $user, $pass, $db);
+
     $mysql->query("
     CREATE TABLE `users` (
     	`admin` TEXT NOT NULL,
     	`password` TEXT NOT NULL
     ); ");
-        
+
     $mysql->query("
          CREATE TABLE `sources` (
     	`name` TEXT NOT NULL,
@@ -40,6 +40,6 @@
         ); ");
 
     $mysql = "";
-        echo "Installation successful<br />";
+        echo "Installation successful<br />, now delete install.php";
 
 ?>

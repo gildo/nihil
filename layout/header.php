@@ -17,36 +17,15 @@
     $mysql = new MySQL();
 
     // chiamata alla funzione di connessione
-    $mysql->connect();
+    $mysql->connect($host, $user, $pass, $db);
     
     $server = $_SERVER ['SERVER_NAME'];
-     
-    $username = mysql_real_escape_string ($_COOKIE ['_user']);
-    $password = mysql_real_escape_string ($_COOKIE ['_pass']);
-
-	if (!admin_exists ())
-    	{
-			print "<form action = 'admin.php?mode=register_admin' method = 'POST'>";
-			print "Name: <input type = 'text' name = 'user'><br>";
-			print "Password: <input type = 'password' name = 'pass'><br>";
-			print "Retype password: <input type = 'password' name = 'pass2'><br>";
-			print "<input type = 'submit' value = 'Register>";
-			print "</form>";
-			if (!empty ($_REQUEST ['user']) && !empty ($_REQUEST ['pass']) && !empty ($_REQUEST ['pass2']))
-			{
-				$name = clearRequest ('user');
-				$pass1 = clearRequest ('pass');
-				$pass2 = clearRequest ('pass2');
- 
-				if ($pass1 == $pass2)
-				{
-					$query = "INSERT INTO `users` (`admin` , `password`) VALUES ('{$name}', '{$pass1}')";
-					$mysql->query ($query);
-					print "Done<br>";
-				}
-			}
-		}
-
+    
+    if ( isset ( $_COOKIE ['_user'], $_COOKIE ['_pass'] )   )
+    {
+        $username = $mysql->prepare ($_COOKIE ['_user']);
+        $password = $mysql->prepare ($_COOKIE ['_pass']);
+    }
 ?>
 <div style="top: 52.5px; left: 126px;" id="container">
 
@@ -67,7 +46,29 @@
                 <div style="border-top: 1px solid #1f1f1f; width: 100%; height: 1px;"></div>
             </div>
          <a href = "index.php?mode=logout">#log_out</a>';
-
+	if (!admin_exists ())
+    	{
+			print "<br><form action = 'admin.php?mode=register_admin' method = 'POST'>";
+			print "<br> admin register form <br> <br>";
+			print "Name: <br> <input type = 'text' name = 'user'><br>";
+			print "Password: <br> <input type = 'password' name = 'pass'><br>";
+			print "Retype password: <br> <input type = 'password' name = 'pass2'><br>";
+			print " <br> <input type = 'submit' value = 'Register'>";
+			print "</form>";
+			if (!empty ($_REQUEST ['user']) && !empty ($_REQUEST ['pass']) && !empty ($_REQUEST ['pass2']))
+			{
+				$name = clearRequest ('user');
+				$pass1 = clearRequest ('pass');
+				$pass2 = clearRequest ('pass2');
+ 
+				if ($pass1 == $pass2)
+				{
+					$query = "INSERT INTO `users` (`admin` , `password`) VALUES ('{$name}', '{$pass1}')";
+					$mysql->query ($query);
+					print "Done<br>";
+				}
+			}
+		}
 ?>
             </div>
         </div>

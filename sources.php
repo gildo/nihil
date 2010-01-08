@@ -28,7 +28,7 @@
     require_once('layout/header.php');
     $query = "SELECT * FROM `sources`";
     $ris = mysql_query ($query) or die ("Errore nell'esecuzione della query");
-    $data = mysql_fetch_array (mysql_query ($query), MYSQL_ASSOC);
+    $data = $mysql->fetch_array ($mysql->query ($query), MYSQL_ASSOC);
     
 ?>
 
@@ -36,10 +36,10 @@
 <?php
     if (admin_exists ())
     {
-       	while ($data = mysql_fetch_array ($ris , MYSQL_ASSOC))
+       	while ($data = $mysql->fetch_array ($ris , MYSQL_ASSOC))
         {   	
-    	if (is_logged () && login (mysql_real_escape_string ($_COOKIE ['_user']),
-    	mysql_real_escape_string ($_COOKIE ['_pass'])))
+    	if (is_logged () && login ($mysql->prepare ($_COOKIE ['_user']),
+    	$mysql->prepare ($_COOKIE ['_pass'])))
  
 		    print "<td><a href = 'source-{$data ['id']}'>{$data ['name']}</a>
 		    		    \n<td>{$data ['language']}</td>\n<td><a href = 'admin.php?mode=delete&id={$data ['id']}'>rm</a></td>
@@ -61,7 +61,7 @@
         		if (!exists ($id))
         			header ("Location: index.php");
         		$query = "SELECT * FROM `sources` WHERE `id` = '{$id}'";
-        		$row = mysql_fetch_array (mysql_query ($query) , MYSQL_ASSOC);
+        		$row = $mysql->fetch_array ($mysql->query ($query) , MYSQL_ASSOC);
         		print "Author: " . $row ['name'] . "<br>";
         		print "Description: " . $row ['description'] . "<br>";
         		print "Language: " . $row ['language'] . "<br><br><br>";
