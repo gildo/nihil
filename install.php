@@ -9,7 +9,7 @@
         CREATE TABLE `users` (
         	`username` TEXT NOT NULL,
         	`password` TEXT NOT NULL,
-            `id` INT (11) NOT NULL AUTO_INCREMENT,
+                `id` INT (11) NOT NULL AUTO_INCREMENT,
         	`group` TEXT NOT NULL,
         	`email` TEXT NOT NULL,
         	    PRIMARY KEY (`id`)
