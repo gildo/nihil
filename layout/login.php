@@ -7,8 +7,8 @@
     /* check if an user want to login and if the login is correct */
     if (isset ($_POST['login']))
     {
-        $user = $_POST['user'];
-        $pass = $_POST['pass'];
+        $user = htmlentities($_POST['user']);
+        $pass = htmlentities($_POST['pass']);
         login ($user, $pass);
     }
 
