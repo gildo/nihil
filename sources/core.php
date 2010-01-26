@@ -8,9 +8,9 @@
         $query    = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
         $res      = mysql_query($query) or die ("SQL error:".mysql_error());
         $rows     = mysql_num_rows($res);
-        if($res != 1)
+        if($rows != 1)
         {
-            print "Wrong username or password";
+            print "Wrong username or password\n";
         }
 
         else
