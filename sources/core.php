@@ -19,7 +19,7 @@ function login($username,$password){
 
 function is_admin($username,$password){
 	$password = md5(sha1($password));
-	$query    = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' AND powere = '1'";
+	$query    = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' AND power = '1'";
 	$res      = mysql_query($query) or die ("SQL error:".mysql_error());
 	$rows     = mysql_num_rows($res);
 	if($res != 1){
