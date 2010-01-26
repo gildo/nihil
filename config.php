@@ -1,8 +1,8 @@
 <?php
 
-$host     = 'localhost';
-$username = 'yep';
-$password = 'yop';
-$database = 'yip';
+    $host     = 'localhost';
+    $username = 'yep';
+    $password = 'yop';
+    $database = 'yip';
 
 ?>

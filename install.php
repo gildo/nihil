@@ -12,10 +12,10 @@
     mysql_query("
         CREATE TABLE `users` (
             `id` INT (11) NOT NULL AUTO_INCREMENT,
-        	`username` TEXT NOT NULL,
+            `username` TEXT NOT NULL,
             `password` TEXT NOT NULL,
             `level` TEXT NOT NULL,
-        	`email` TEXT NOT NULL,
+            `email` TEXT NOT NULL,
         	    PRIMARY KEY (`id`)
         );
     ");
