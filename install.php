@@ -2,8 +2,8 @@
 
     include("config.php");
 
-    $hey = mysql_connect($host,$user,$pass);
-    mysql_select_db($db, $hey);
+    $hey = mysql_connect($host,$username,$password);
+    mysql_select_db($database, $hey);
 
     mysql_query("
         CREATE TABLE `users` (
