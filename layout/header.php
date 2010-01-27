@@ -34,4 +34,3 @@
 
         <div class="main">
         <!-- ALTRA MERDA DA AGGIUNGERE QUI. (MAGARI CI METTIAMO I POSTS) -->
-        </div>
