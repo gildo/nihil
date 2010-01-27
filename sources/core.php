@@ -8,6 +8,9 @@
         $query    = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
         $res      = mysql_query($query) or die ("SQL error:".mysql_error());
         $rows     = mysql_num_rows($res);
+        $ris      = mysql_fetch_array($res);
+        $level    = $ris['level'];
+        
         if($rows != 1)
         {
             print "Wrong username or password\n";
@@ -15,8 +18,16 @@
 
         else
         {
-            print "Login lates with success";
-            setcookie('biscotto',$password,time()+2000,'/');
+        	if($level != 'admin')
+        	{
+           		print "Login lates with success";
+            	setcookie('biscotto',$password,time()+2000,'/');
+			}
+			else
+			{
+           		print "Login lates with success,hi admin";
+            	setcookie('biscotto',$password,time()+2000,'/');
+			}
         }
     }
 
@@ -37,7 +48,7 @@
         else
         {
             print "Login lates with success, hi admin";
-            setcookie('login',$password,time()+2000,'/');
+            setcookie('biscotto',$password,time()+2000,'/');
         }
     }
 
@@ -71,7 +82,8 @@
             print "Username or password that is' present";
         }
     }
-
+	
+	//is_login ->
     function is_logged ()
     {
     	if (isset ($_COOKIE ['biscotto']))
