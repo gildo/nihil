@@ -4,7 +4,7 @@
 
     if (is_logged ())
     {
-    	setcookie ("biscotto" , "" , time () - 100000000);
+        setcookie('biscotto',$password,time() -2000);
     	header ("Location: index.php");
     }
 
