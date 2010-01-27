@@ -10,7 +10,7 @@
         $rows     = mysql_num_rows($res);
         $ris      = mysql_fetch_array($res);
         $level    = $ris['level'];
-        
+
         if($rows != 1)
         {
             print "Wrong username or password\n";
@@ -18,16 +18,16 @@
 
         else
         {
-        	if($level != 'admin')
-        	{
-           		print "Login lates with success";
-            	setcookie('biscotto',$password,time()+2000,'/');
-			}
-			else
-			{
-           		print "Login lates with success,hi admin";
-            	setcookie('biscotto',$password,time()+2000,'/');
-			}
+            if($level != 'admin')
+            {
+                   print "Login lates with success";
+                setcookie('biscotto',$password,time()+2000,'/');
+            }
+            else
+            {
+                   print "Login lates with success,hi admin";
+                setcookie('biscotto',$password,time()+2000,'/');
+            }
         }
     }
 
@@ -82,56 +82,56 @@
             print "Username or password that is' present";
         }
     }
-	
-	//is_login ->
-	
+
+    //is_login ->
+
     function is_logged ()
     {
-    	if (isset ($_COOKIE ['biscotto']))
-    	{
-    		return true;
-       	}
+        if (isset ($_COOKIE ['biscotto']))
+        {
+            return true;
+           }
 
-    	else
-    	{
-    	    return false;
+        else
+        {
+            return false;
         }
     }
-    
+
     //write_menu ->
-    
+
     function write_menu()
     {
-    	$query = "SELECT * FROM pages";
-    	$res   = mysql_query($query) or die ("SQL error:".mysql_error());
-    	
-    	
-    	while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
-    	{
-    		print "<a href='index.php?id=".$ris['id']."'>".$ris['name']."</a>";
-		}
-	}
-	
-	//write_pages ->
-	
-	function write_pages($id)
-	{
-		if($id == NULL)
-		{
-			//si potrebbe anche usare una query,che printerebbe l'id 1 (cioe' quello dell'home page)
-			print "Hi,this is a home page :3";
-		}
-		else
-		{	
-			$query = "SELECT * FROM pages WHERE  id = '{$id}'";
-			$res   = mysql_query($query) or die ("SQL error:".mysql_error());
-		
-			while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
-			{
-			print $ris['content'];
-			}
-		}
-	}
-		
+        $query = "SELECT * FROM pages";
+        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+
+
+        while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+        {
+            print "<a href='index.php?id=".$ris['id']."'>".$ris['name']."</a>";
+        }
+    }
+
+    //write_pages ->
+
+    function write_pages($id)
+    {
+        if($id == NULL)
+        {
+            //si potrebbe anche usare una query,che printerebbe l'id 1 (cioe' quello dell'home page)
+            print "Hi,this is a home page :3";
+        }
+        else
+        {
+            $query = "SELECT * FROM pages WHERE  id = '{$id}'";
+            $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+
+            while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+            {
+            print $ris['content'];
+            }
+        }
+    }
+
 
 ?>
