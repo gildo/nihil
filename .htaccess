@@ -1,2 +1,3 @@
 RewriteEngine On
 RewriteRule login layout/login.php
+RewriteRule logout layout/logout.php
