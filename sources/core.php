@@ -111,5 +111,19 @@
     		print "<a href='index.php?id=".$ris['id']."'>".$ris['name']."</a>";
 		}
 	}
+	
+	//write_pages ->
+	
+	function write_pages($id)
+	{
+		$query = "SELECT * FROM pages WHERE  id = '{$id}'";
+		$res   = mysql_query($query) or die ("SQL error:".mysql_error());
+		
+		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+		{
+			print $ris['content'];
+		}
+	}
+		
 
 ?>
