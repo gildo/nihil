@@ -12,7 +12,7 @@ border:1px solid #444444;
 margin:10px auto 0;
 padding:4px;
 text-align:left;
-width:999px;
+width:50%;
 }
 div.menu {
 background-color:#000000;
@@ -20,14 +20,14 @@ font-size:12px;
 margin:5px auto 0;
 padding:5px;
 text-align:center;
-width:1000px;
+width:50%;
 }
 div.footer {
 background-color:#000000;
 margin:40px auto 0;
 padding:5px;
 text-align:right;
-width:1000px;
+width:50%;
 }
 td.projectmain {
 padding:1px;
