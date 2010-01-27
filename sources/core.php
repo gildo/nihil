@@ -84,6 +84,7 @@
     }
 	
 	//is_login ->
+	
     function is_logged ()
     {
     	if (isset ($_COOKIE ['biscotto']))
@@ -96,5 +97,19 @@
     	    return false;
         }
     }
+    
+    //write_menu ->
+    
+    function write_menu()
+    {
+    	$query = "SELECT * FROM pages";
+    	$res   = mysql_query($query) or die ("SQL error:".mysql_error());
+    	
+    	
+    	while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+    	{
+    		print "<a href='index.php?id=".$ris['id']."'>".$ris['name']."</a>";
+		}
+	}
 
 ?>
