@@ -16,7 +16,7 @@
         else
         {
             print "Login lates with success";
-            setcookie('login',$password,time()+2000,'/');
+            setcookie('biscotto',$password,time()+2000,'/');
         }
     }
 
@@ -72,5 +72,17 @@
         }
     }
 
+    function is_logged ()
+    {
+    	if (isset ($_COOKIE ['biscotto']))
+    	{
+    		return true;
+       	}
+
+    	else
+    	{
+    	    return false;
+        }
+    }
 
 ?>
