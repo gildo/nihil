@@ -22,12 +22,17 @@
         <!-- qui dobbiamo mettere le pagine presenti nella tabella pages -->
         <div class="menu"><a href="index.php"><b>home</b></a>
         <?php
-        if(!is_logged())
-        {
-            print('<a href="login"><b>login</b></a>');
-        }
-        else
-            print('<a href="logout"><b>logout</b></a>');
+        
+        	if(!is_logged())
+        	{
+            	print('<a href="login"><b>login</b></a>');
+        	}
+        	else
+        	{
+            	print('<a href="logout"><b>logout</b></a>');
+			}
+			write_menu();
+			
         ?>
 
         </div>

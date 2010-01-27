@@ -108,7 +108,7 @@
 
         while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
         {
-            print "<a href='index.php?id=".$ris['id']."'>".$ris['name']."</a>";
+            print "<a href='index.php?id=".$ris['id']."'><b>".$ris['name']."</b></a>";
         }
     }
 
