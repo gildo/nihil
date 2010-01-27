@@ -43,12 +43,14 @@
         if($res != 1)
         {
             print "Wrong username or password";
+            return false;
         }
 
         else
         {
             print "Login lates with success, hi admin";
             setcookie('biscotto',$password,time()+2000,'/');
+            return true;
         }
     }
 
