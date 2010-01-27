@@ -132,6 +132,23 @@
             }
         }
     }
+    
+    //new_page ->
+    
+    function new_page($name,$content,$author)
+    {
+    	$query = "INSERT INTO pages (name,content,author,id) VALUES ('$name','$content','$author','')";
+    	$res   = mysql_query($query) or die ("SQL error:".mysql_error());
+    	if($res)
+    	{
+    		print "This page inserted with success :D\n";
+		}
+		else
+		{
+			print "This page is not included :(\n";
+		}
+	}
+    	
 
 
 ?>
