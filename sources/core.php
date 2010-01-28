@@ -21,12 +21,12 @@
             if($level != 'admin')
             {
                    print "Login lates with success";
-                setcookie('biscotto',$password,time()+2000,'/');
+                   setcookie('biscotto',$password,time()+2000,'/');
             }
             else
             {
                    print "Login lates with success,hi admin";
-                setcookie('biscotto',$password,time()+2000,'/');
+                   setcookie('biscotto',$password,time()+2000,'/');
             }
         }
     }
@@ -148,7 +148,7 @@
 	}
 
 	//post ->
-	
+
     function post($author,$name,$content,$hour,$date)
     {
         $query = "INSERT INTO articles(author,name,content,hour,date,id) VALUES ('$author','$name','$content','$hour','$date','')";
@@ -163,14 +163,14 @@
 			print "NOOO!!!, error :( :(\n";
 		}
     }
-    
+
     //write_post ->
 
 	function write_post($id)
 	{
 		$query = "SELECT * FROM articles WHERE id = '{$id}'";
 		$res   = mysql_query($query) or die ("SQL error:".mysql_error());
-		
+
 		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
 		{
 			print "<div class='articles'>";
@@ -178,18 +178,18 @@
 			print $ris['content'];
 			print "<p align='right'>Posted by ".$ris['author']." :: ".$ris['date']." at ".$ris['hour']."</p>";
 			print "</div>";
-			
+
 		}
 	}
-	
+
 	//pagination ->
-	
+
 	function pagination()
 	{
 		$query = "SELECT * FROM articles";
 		$res   = mysql_query($query) or die ("SQL error:".mysql_error());
 		$num   = mysql_num_rows($res);
-		
+
 		if($num % 5 > 0)
 		{
 			$pages = (int) ($num / 5) + 1;
@@ -198,7 +198,7 @@
 		{
 			$pages = (int) ($num / 5);
 		}
-	
+
 		if (isset ($_GET ['page']))
 		{
 			$id = intval ($_GET ['page']);
@@ -210,36 +210,38 @@
 			$from = 0;
 			$to   = 5;
 		}
-		
+
 		$print = "SELECT * FROM articles ORDER BY id DESC LIMIT {$from},{$to}";
 		$res   = mysql_query ($prin) or die ("SQL error:".mysql_error());
-		
+
 		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
 		{
 			$article = "";
 			$size    = strlen($ris['content']) / 4;
+
 			if($size > 800)
 			{
 				$size = 800;
 			}
+
 			for($i = 0;$i < $size; $i++)
 			{
 				$article .= $ris['content'][$i];
 			}
-			
+
 			print "<div class='article'>";
 			print "<center><a href='?blog&view=".$ris['id']."'>".$ris['name']."</a></center>";
 			print $article.". . .";
 			print "</div>";
-				
-		
+
+
 		}
-		
+
 		for($c = 1; $c <= $pages; $c++)
 		{
 			print "<div class = 'page'><a href = 'index.php?blog&page=".$c."'>.".$c."</a></div>";
-		
+
 		}
 	}
-		
+
 ?>

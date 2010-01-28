@@ -3,7 +3,6 @@
 	mysql_close($connect);
 
 ?>
-        </div>
         <div class="footer">
         copyleft <a href="http://github.com/fyskij/NOcms">NOcms.</a><br>
         Valid: <a href="http://validator.w3.org/check?uri=http://fl3.gotdns.org">W3C HTML</a>
