@@ -13,7 +13,7 @@
     
     if($blog == NULL && $page == NULL && $view == NULL)
     {
-        write_page($id);
+        write_pages($id);
     }
     else
     {
