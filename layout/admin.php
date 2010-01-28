@@ -47,14 +47,14 @@
         else
         {
             print "Not have permission to view these pages :@";
-            header("Location: 3;URL=/index.php");
+            header("Location: index.php");
         }
 
     }
     else
     {
         print "Not logged";
-        header("Location: 3;URL=login.php");
+        header("Location: login");
     }
 
     include('../layout/footer.php');
