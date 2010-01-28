@@ -237,7 +237,7 @@
 		
 		for($c = 1; $c <= $pages; $c++)
 		{
-			print "<div class = 'page'><a href = 'index.php?blog&page=".$c."'>."$c."</a></div>";
+			print "<div class = 'page'><a href = 'index.php?blog&page=".$c."'>.".$c."</a></div>";
 		
 		}
 	}
