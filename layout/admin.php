@@ -7,14 +7,14 @@
 
         if(is_admin() == TRUE)
         {
-        	
+
             $mode = $_GET['mode'];
 
             switch ($mode)
             {
                 case "post":
 
-                print "<form action = 'admin.php' method = 'POST' name='posta'>";
+                print "<form action = 'admin?mode=post' method = 'POST'>";
                 print "Author: <input type = 'text' name = 'author'><br>";
                 print "Name: <input type = 'text' name = 'name'><br>";
                 print "<textarea name = 'content' rows = '10' cols = '75'></textarea><br>";
