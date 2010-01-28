@@ -39,6 +39,31 @@
 
             break;
 
+            case "new_page":
+
+            print "<form action = 'admin?mode=new_page' method = 'POST'>";
+            print "Author: <input type = 'text' name = 'author'><br>";
+            print "Name: <input type = 'text' name = 'name'><br>";
+            print "<textarea name = 'content' rows = '10' cols = '75'></textarea><br>";
+            print "<input type = 'submit' value = 'post'>";
+            print "</form>";
+
+            if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['name']) && !empty ($_REQUEST ['content']))
+            {
+                $author  =  $_POST['author'];
+                $content =  $_POST['content'];
+                $name    =  $_POST['name'];
+
+                new_page($name,$content);
+
+            }
+            else
+            {
+                print "Fill in all fields";
+            }
+
+            break;
+
                 default:
 
                 die ();
