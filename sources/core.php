@@ -106,7 +106,7 @@
 
         while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
         {
-            print "<td class='menu1'><a href='index.php?id=".$ris['id']."'><b>".$ris['name']."</b></a></td>";
+            print "<td class='menu1'><a href='".$ris['id']."'><b>".$ris['name']."</b></a></td>";
         }
     }
 
@@ -230,8 +230,8 @@
 			}
 
 			print "<div class='article'>";
-			print "<center><a href='?blog=view&view=".$ris['id']."'>".$ris['name']."</a></center>";
-			print $article.". . .";
+			print "<center><a href='post-".$ris['id']."'>".$ris['name']."</a></center>";
+			print $article."  ...continue";
 			print "</div>";
 
 
@@ -243,18 +243,18 @@
         {
             print " <td><a href='index.php?blog=page&page=".$stat."'><= </a></td>";
         }
-        
+
 		for($c = 1; $c <= $pages; $c++)
 		{
-		    
+
 			print "<td class = 'pages'><a href = 'index.php?blog=page&page=".$c."'>".$c."</a></td>";
 
 		}
-		
+
 		print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
 		print "     </tr>";
 		print "</table>";
-		
+
 	}
 
 ?>
