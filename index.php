@@ -25,6 +25,7 @@
             pagination();
 
             break;
+
             case 'view':
 
             write_post($view);

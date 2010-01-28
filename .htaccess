@@ -1,6 +1,8 @@
 RewriteEngine On
-RewriteBase /
+#RewriteBase /
 RewriteRule ^login NOcms/layout/login.php
 RewriteRule ^logout layout/logout.php
-RewriteRule ^admin layout/admin.php
-RewriteRule ^admin/post admin.php?mode=post_blog
+RewriteRule admin layout/admin.php
+RewriteRule ^admin/post admin.php?mode=post
+RewriteRule ^post-([0-9]+)$ index.php?blog=view&view=$1
+RewriteRule ^([a-z0-9]+)$ index.php?id=$1
