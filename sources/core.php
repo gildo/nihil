@@ -174,9 +174,9 @@
 		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
 		{
 			print "<div class='articles'>";
-			print "<center>".$ris['name']."</center><br>";
-			print $ris['content'];
-			print "<p align='right'>Posted by ".$ris['author']." :: ".$ris['date']." at ".$ris['hour']."</p>";
+			print "<center><h3><b>".$ris['name']."</b></h3></center><br>";
+			print $ris['content']."<br>";
+			print "<p align='right'>Posted by <i>".$ris['author']."</i> :: ".$ris['date']." at ".$ris['hour']."</p>";
 			print "</div>";
 
 		}
@@ -217,7 +217,7 @@
 		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
 		{
 			$article = "";
-			$size    = strlen($ris['content']) / 4;
+			$size    = strlen($ris['content']) / 2;
 
 			if($size > 800)
 			{
@@ -236,12 +236,15 @@
 
 
 		}
-
+        print "<table>";
+        print "     <tr>";
 		for($c = 1; $c <= $pages; $c++)
 		{
-			print "<div class = 'pages'><a href = 'index.php?blog=page&page=".$c."'>".$c."</a></div>";
+			print "<td class = 'pages'><a href = 'index.php?blog=page&page=".$c."'>".$c."</a></td>";
 
 		}
+		print "     </tr>";
+		print "</table>";
 	}
 
 ?>
