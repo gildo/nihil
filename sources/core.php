@@ -236,15 +236,25 @@
 
 
 		}
+        $stat = (int) $_GET['page'] + 1;
         print "<table>";
         print "     <tr>";
+        if($stat == 2)
+        {
+            print " <td><a href='index.php?blog=page&page=".$stat."'><= </a></td>";
+        }
+        
 		for($c = 1; $c <= $pages; $c++)
 		{
+		    
 			print "<td class = 'pages'><a href = 'index.php?blog=page&page=".$c."'>".$c."</a></td>";
 
 		}
+		
+		print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
 		print "     </tr>";
 		print "</table>";
+		
 	}
 
 ?>
