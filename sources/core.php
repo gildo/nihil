@@ -254,7 +254,6 @@
 
 		$stat ++;
         print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
-        print "     <td><a href='index.php?blog=page&page=".$stat++."'> =></a></td>";
         print "     </tr>";
         print "</table>";
 
