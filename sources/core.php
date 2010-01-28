@@ -33,10 +33,9 @@
 
     //is_admin ->
 
-    function is_admin($username,$password){
+    function is_admin($password){
 
-        $password = md5(sha1($password));
-        $query    = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' AND level = 'admin'";
+        $query    = "SELECT * FROM users WHERE password = '{$password}' AND level = 'admin'";
         $res      = mysql_query($query) or die ("SQL error:".mysql_error());
         $rows     = mysql_num_rows($res);
 
