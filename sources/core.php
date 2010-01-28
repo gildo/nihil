@@ -217,11 +217,11 @@
 		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
 		{
 			$article = "";
-			$size    = strlen($ris['content']) / 2;
+			$size    = strlen($ris['content']);
 
-			if($size > 800)
+			if($size > 200)
 			{
-				$size = 800;
+				$size = 200;
 			}
 
 			for($i = 0;$i < $size; $i++)
