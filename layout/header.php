@@ -20,7 +20,7 @@
         <font size="20px"><?php echo $title; ?></font><br>
         <br><br>
         <!-- qui dobbiamo mettere le pagine presenti nella tabella pages -->
-        <div class="menu"><a href="index.php"><b>home</b></a><a href="index.php?blog=page&page=1"><b>blog</b></a>
+        <div class="menu"><a href="index.php"><b>home</b></a> <a href="index.php?blog=page&page=1"><b>blog</b></a>
         <?php
 
         	if(!is_logged())
