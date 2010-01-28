@@ -16,6 +16,7 @@ width:50%;
 div.menu {
 background-color:#000000;
 font-size:12px;
+color:; 
 margin:5px auto 0;
 padding:5px;
 text-align:center;
@@ -33,7 +34,12 @@ background-color:#000000;
 margin:2px;
 padding:2px;
 border:1px solid #c1c1c1;
-width:5px;
+}
+td.menu1 {
+background-color:#000000;
+margin:2px;
+padding:2px;
+border:1px solid #444444;
 }
 div.article {
 background-color:#000000;
@@ -170,20 +176,20 @@ text-align:left;
 width:200px;
 }
 a:link {
-color:#444444;
+color:#666666;
 text-decoration:none;
 }
 a:visited {
-color:#444444;
+color:#666666;
 text-decoration:none;
 }
 a:hover {
-color:#FFFFFF;
+color:#ffffff;
 text-decoration:none;
 }
 input, textarea, select {
 background:none repeat scroll 0 0 #000000;
-border:1px solid #444444;
+border:1px solid #666666;
 color:#FFFFFF;
 font-family:Terminus,TTFminus,Fixedsys,Fixed,Terminal,Courier New,Courier;
 font-size:9pt;

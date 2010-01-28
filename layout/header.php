@@ -20,20 +20,29 @@
         <font size="20px"><?php echo $title; ?></font><br>
         <br><br>
         <!-- qui dobbiamo mettere le pagine presenti nella tabella pages -->
-        <div class="menu"><a href="index.php"><b>home</b></a> <a href="index.php?blog=page&page=1"><b>blog</b></a>
+        <div class="menu">
+            <table>
+                <tr>
+                    <td class = "menu1"><a href="index.php"><b>home</b></a></td> 
+                    <td class = "menu1"><a href="index.php?blog=page&page=1"><b>blog</b></a></td>
+                    
         <?php
 
         	if(!is_logged())
         	{
-            	print('<a href="login"><b>login</b></a> ');
+            	print('<td class = "menu1"><a href="login"><b>login</b></a></td> ');
         	}
         	else
         	{
-            	print('<a href="logout"><b>logout</b></a> ');
+            	print('<td class = "menu1"><a href="logout"><b>logout</b></a></td> ');
 			}
 			write_menu();
 
         ?>
+        
+                    </tr>
+            </table>
+        
 
         </div>
 
