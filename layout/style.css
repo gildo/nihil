@@ -16,11 +16,10 @@ width:50%;
 div.menu {
 background-color:#000000;
 font-size:12px;
-color:; 
 margin:5px auto 0;
 padding:5px;
 text-align:center;
-width:50%;
+width:51%;
 }
 div.footer {
 background-color:#000000;
@@ -37,7 +36,6 @@ border:1px solid #c1c1c1;
 }
 td.menu1 {
 background-color:#000000;
-margin:2px;
 padding:2px;
 border:1px solid #444444;
 }
@@ -46,134 +44,6 @@ background-color:#000000;
 margin:2px;
 padding:2px;
 border:1px dotted #c1c1c1;
-}
-td.projectmain {
-padding:1px;
-width:800px;
-}
-td.linkname {
-border-bottom:1px solid #444444;
-padding:1px;
-width:300px;
-}
-td.linklang {
-border-bottom:1px solid #444444;
-padding:1px;
-width:300px;
-}
-td.linkautore {
-border-bottom:1px solid #444444;
-padding:1px;
-width:300px;
-}
-td.linkdata {
-border-bottom:1px solid #444444;
-padding:1px;
-width:300px;
-}
-td.nolinkname {
-border-top:1px solid #444444;
-font-size:12px;
-padding:3px;
-text-align:right;
-width:300px;
-}
-td.nolinklang {
-border-top:1px solid #444444;
-font-size:12px;
-padding:3px;
-text-align:right;
-width:150px;
-}
-td.nolinkautore {
-border-top:1px solid #444444;
-font-size:12px;
-padding:3px;
-text-align:right;
-width:150px;
-}
-td.nolinkdata {
-border-top:1px solid #444444;
-font-size:12px;
-padding:3px;
-text-align:right;
-width:300px;
-}
-td.nolink {
-border-top:1px solid #444444;
-font-size:12px;
-padding:3px;
-text-align:right;
-width:200px;
-}
-td.nodescription {
-border-top:1px solid #444444;
-font-size:12px;
-padding:3px;
-text-align:right;
-width:700px;
-}
-td.link {
-border-top:1px solid #444444;
-font-size:10px;
-padding:3px;
-text-align:left;
-width:200px;
-}
-td.description {
-border-top:1px solid #444444;
-font-size:10px;
-padding:3px;
-text-align:left;
-width:700px;
-}
-td.noproject {
-border-top:1px solid #444444;
-padding:3px;
-text-align:right;
-width:200px;
-}
-td.noprojectdescription {
-border-top:1px solid #444444;
-padding:3px;
-text-align:right;
-width:500px;
-}
-td.noprojectautore {
-border-top:1px solid #444444;
-padding:3px;
-text-align:right;
-width:200px;
-}
-td.noprojectdata {
-border-top:1px solid #444444;
-padding:3px;
-text-align:right;
-width:200px;
-}
-td.project {
-border-top:1px solid #444444;
-padding:3px;
-text-align:left;
-width:200px;
-}
-td.projectdescription {
-border-top:1px solid #444444;
-padding:3px;
-text-align:left;
-width:500px;
-}
-td.projectautore {
-border-top:1px solid #444444;
-padding:3px;
-text-align:left;
-width:200px;
-}
-td.projectdata {
-border-top:1px solid #444444;
-padding:3px;
-text-align:left;
-width:200px;
 }
 a:link {
 color:#666666;
