@@ -212,7 +212,7 @@
 		}
 
 		$print = "SELECT * FROM articles ORDER BY id DESC LIMIT {$from},{$to}";
-		$res   = mysql_query ($prin) or die ("SQL error:".mysql_error());
+		$res   = mysql_query ($print) or die ("SQL error:".mysql_error());
 
 		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
 		{
@@ -230,7 +230,7 @@
 			}
 
 			print "<div class='article'>";
-			print "<center><a href='?blog&view=".$ris['id']."'>".$ris['name']."</a></center>";
+			print "<center><a href='?blog=view&view=".$ris['id']."'>".$ris['name']."</a></center>";
 			print $article.". . .";
 			print "</div>";
 
@@ -239,7 +239,7 @@
 
 		for($c = 1; $c <= $pages; $c++)
 		{
-			print "<div class = 'page'><a href = 'index.php?blog&page=".$c."'>.".$c."</a></div>";
+			print "<div class = 'page'><a href = 'index.php?blog=page&page=".$c."'>.".$c."</a></div>";
 
 		}
 	}
