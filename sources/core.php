@@ -147,10 +147,12 @@
 		}
 	}
 
+	//post ->
+	
     function post($author,$name,$content,$hour,$date)
     {
-        $query = "insert into articles(author,name,content,hour,date) values('$author','$name','$content','$hour','$date')";
-        $res = mysql_query ($query) or die ("Errore nell'esecuzione della query: ".mysql_error());
+        $query = "INSERT INTO articles(author,name,content,hour,date,id) VALUES ('$author','$name','$content','$hour','$date','')";
+        $res   = mysql_query ($query) or die ("Errore nell'esecuzione della query: ".mysql_error());
 
     	if($res)
     	{
@@ -161,5 +163,23 @@
 			print "NOOO!!!, error :( :(\n";
 		}
     }
+    
+    //write_post ->
 
+	function write_post($id)
+	{
+		$query = "SELECT * FROM articles WHERE id = '{$id}'";
+		$res   = mysql_query($query) or die ("SQL error:".mysql_error());
+		
+		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+		{
+			print "<div class='articles'>";
+			print "<center>".$ris['name']."</center><br>";
+			print $ris['content'];
+			print "<p align='right'>Posted by ".$ris['author']." :: ".$ris['date']." at ".$ris['hour']."</p>";
+			print "</div>";
+			
+		}
+	}
+		
 ?>
