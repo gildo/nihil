@@ -2,9 +2,12 @@
 
     include('../layout/header.php');
 
-    if(is_logged() == TRUE) {
+    if(is_logged() == TRUE)
+    {
 
-        if(is_admin() == TRUE){
+        if(is_admin() == TRUE)
+        {
+        	
             $mode = $_GET['mode'];
 
             switch ($mode)
@@ -34,11 +37,11 @@
                     print "Fill in all fields";
                 }
 
-                break;
+            break;
 
-            default:
+                default:
 
-            die ();
+                die ();
 
             break;
 
