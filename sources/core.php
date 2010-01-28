@@ -248,15 +248,15 @@
 		for($c = 1; $c <= $pages; $c++)
 		{
 
-			print " <td class = 'pages'><a href = 'index.php?blog=page&page=".$c."'>".$c."</a></td>";
+            print " <td class = 'pages'><a href = 'index.php?blog=page&page=".$c."'>".$c."</a></td>";
 
 		}
 
 		$stat ++;
-		print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
+        print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
         print "     <td><a href='index.php?blog=page&page=".$stat++."'> =></a></td>";
-		print "     </tr>";
-		print "</table>";
+        print "     </tr>";
+        print "</table>";
 
 	}
 
