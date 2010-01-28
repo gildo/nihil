@@ -1,6 +1,6 @@
 <?php
 	
-	error_reporting( 0 );
+    error_reporting( 0 );
 	
     include('layout/header.php');
     include('layout/footer.php');
@@ -13,26 +13,26 @@
     
     if($blog == NULL && $page == NULL && $view == NULL)
     {
-    	write_page($id);
-	}
-	else
-	{
+        write_page($id);
+    }
+    else
+    {
 		
-		switch($blog)
-		{
-			case 'page':
+        switch($blog)
+        {
+            case 'page':
 			
-			pagination();
+            pagination();
 			
-			break;
-			case 'view':
+            break;
+            case 'view':
 			
-			write_post($view);
+            write_post($view);
 			
-			break;
+            break;
 	
-		}
+        }
 		
-	}			
+    }			
 
 ?>
