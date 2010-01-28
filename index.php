@@ -3,7 +3,7 @@
     error_reporting( 0 );
 
     include('layout/header.php');
-    include('layout/footer.php');
+
 
 
     $id   = $_GET['id'];
@@ -35,5 +35,6 @@
 
     }
 
+    include('layout/footer.php');
 ?>
 </div>
