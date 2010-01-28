@@ -130,9 +130,9 @@
             }
         }
     }
-    
+
     //new_page ->
-    
+
     function new_page($name,$content,$author)
     {
     	$query = "INSERT INTO pages (name,content,author,id) VALUES ('$name','$content','$author','')";
@@ -146,7 +146,20 @@
 			print "This page is not included :(\n";
 		}
 	}
-    	
 
+    function post($author,$name,$content,$hour,$date)
+    {
+        $query = "insert into articles(author,name,content,hour,date) values('$author','$name','$content','$hour','$date')";
+        $res = mysql_query ($query) or die ("Errore nell'esecuzione della query: ".mysql_error());
+
+    	if($res)
+    	{
+    		print "Post inserted with success :D\n";
+		}
+		else
+		{
+			print "NOOO!!!, error :( :(\n";
+		}
+    }
 
 ?>
