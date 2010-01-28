@@ -251,12 +251,31 @@
             print " <td class = 'pages'><a href = 'index.php?blog=page&page=".$c."'>".$c."</a></td>";
 
 		}
-
-		$stat ++;
-        print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
+        if(end_posts($stat) == TRUE)
+        {
+		    $stat ++;
+            print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
+        }
         print "     </tr>";
         print "</table>";
 
 	}
+	
+	//end_posts ->
+	
+	function end_posts($id)
+	{
+	    $query = "SELECT * FROM articles WHERE id = '{$id}'";
+	    $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+	    $num   = mysql_num_rows($res);
+	    if($num == 1)
+	    {
+	        return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 ?>
