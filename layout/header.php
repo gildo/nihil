@@ -25,7 +25,7 @@
 
         	if(!is_logged())
         	{
-            	print('<a href="login"><b>login</b></a>');
+            	print('<a href="login"><b>login</b></a> ');
         	}
         	else
         	{
