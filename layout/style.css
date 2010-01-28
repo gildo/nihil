@@ -29,6 +29,19 @@ padding:5px;
 text-align:right;
 width:50%;
 }
+div.pages {
+background-color:#000000;
+margin:2px;
+padding:2px;
+border:1px solid #ffffff;
+}
+div.article {
+width: 48%;
+background-color:#000000;
+margin:2px;
+padding:2px;
+border:1px solid #ffffff;
+}
 td.projectmain {
 padding:1px;
 width:800px;
