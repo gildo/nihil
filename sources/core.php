@@ -236,12 +236,12 @@
 
 
 		}
-        $stat = (int) $_GET['page'] + 1;
+        $stat = (int) $_GET['page'];
         print "<table>";
         print "     <tr>";
-        if($stat == 2)
+        if($stat >= 2)
         {
-            print " <td><a href='index.php?blog=page&page=".$stat."'><= </a></td>";
+            print " <td><a href='index.php?blog=page&page=".$stat--."'><= </a></td>";
         }
 
 		for($c = 1; $c <= $pages; $c++)
@@ -251,7 +251,7 @@
 
 		}
 
-		print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
+        print "     <td><a href='index.php?blog=page&page=".$stat++."'> =></a></td>";
 		print "     </tr>";
 		print "</table>";
 
