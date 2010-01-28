@@ -34,7 +34,7 @@
     //is_admin ->
 
     function is_admin(){
-		
+
 		$biscotto = $_COOKIE['biscotto'];
         $query    = "SELECT * FROM users WHERE password = '{$biscotto}' AND level = 'admin'";
         $res      = mysql_query($query) or die ("SQL error:".mysql_error());
@@ -106,7 +106,7 @@
 
         while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
         {
-            print "<a href='index.php?id=".$ris['id']."'><b>".$ris['name']."</b></a>";
+            print "<a href='index.php?id=".$ris['id']."'><b>".$ris['name']."</b></a> ";
         }
     }
 
@@ -133,9 +133,9 @@
 
     //new_page ->
 
-    function new_page($name,$content,$author)
+    function new_page($name,$content)
     {
-    	$query = "INSERT INTO pages (name,content,author,id) VALUES ('$name','$content','$author','')";
+    	$query = "INSERT INTO pages (name,content) VALUES ('$name','$content')";
     	$res   = mysql_query($query) or die ("SQL error:".mysql_error());
     	if($res)
     	{
