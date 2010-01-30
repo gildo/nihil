@@ -311,7 +311,8 @@
             print "<from action = 'admin.php' method = 'POST'>";
             print "<input type = 'text' name = 'name' value = '".$ris['name']."'><br>";
             print "<textarea name = 'content' >".$ris['content']."</textarea><br>";
-            print "<input type = 'text' name = 'date' value = '".$ris['date']."'> <input type = 'text' name = 'hour' value = '".$ris['hour']."'>";
+            print "<input type = 'text' name = 'date' value = '".$ris['date']."'> <input type = 'text' name = 'hour' value = '".$ris['hour']."'><br>";
+            print "<input type = 'submit' value = 'edit'> <input type = 'reset' value = 'reset'>";
             print "</from>";
         }
         

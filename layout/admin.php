@@ -1,5 +1,8 @@
 <?php
 
+    error_reporting( 0 );
+    
+    
     include('../layout/header.php');
     
     $edit   = $_GET['edit'];
@@ -76,7 +79,7 @@
                 
                 case 'delete':
                 
-                delete_articles($delete);
+                delete_article($delete);
                 
                 break;
                 /* default case */
