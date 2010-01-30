@@ -308,12 +308,12 @@
         $res   = mysql_query($query) or die ("SQL error:".mysql_error());
         while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
         {
-            print "<from action = 'admin.php?mode=edit&edit={$id}' method = 'POST'>";
+            print "<form action = 'admin.php?mode=edit&edit={$id}' method = 'POST'>";
             print "<input type = 'text' name = 'name' value = '".$ris['name']."'><br>";
             print "<textarea name = 'content' >".$ris['content']."</textarea><br>";
             print "<input type = 'text' name = 'date' value = '".$ris['date']."'> <input type = 'text' name = 'hour' value = '".$ris['hour']."'><br>";
             print "<input type = 'submit' value = 'edit'> <input type = 'reset' value = 'reset'>";
-            print "</from>";
+            print "</form>";
         }
 
         if(!empty($_POST['name']) || !empty($_POST['content']) || !empty($_POST['date']) || !empty($_POST['hour']))
