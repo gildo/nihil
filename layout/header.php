@@ -23,9 +23,9 @@
         <div class="menu">
             <table>
                 <tr>
-                    <td class = "menu1"><a href="index.php"><b>home</b></a></td> 
-                    <td class = "menu1"><a href="index.php?blog=page&page=1"><b>blog</b></a></td>
-                    
+                    <td class = "menu1"><a href="index.php"><b>home</b></a></td>
+                    <td class = "menu1"><a href="blog"><b>blog</b></a></td>
+
         <?php
 
         	if(!is_logged())
@@ -39,10 +39,10 @@
 			write_menu();
 
         ?>
-        
+
                     </tr>
             </table>
-        
+
 
         </div>
 
