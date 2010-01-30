@@ -43,7 +43,7 @@ div.article {
 background-color:#000000;
 margin:2px;
 padding:2px;
-border:1px dotted #c1c1c1;
+border-bottom:1px dotted #444444;
 }
 a:link {
 color:#666666;
