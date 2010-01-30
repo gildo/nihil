@@ -234,7 +234,7 @@
 			if(is_admin() == TRUE)
 			{
 			    print "<a href='layout/admin.php?mode=edit&edit=".$ris['id']."'>[edit]</a> ";
-			    print "<a href='layout/admin.php?mode=delte&delte=".$ris['id']."'>[x]</a>";
+			    print "<a href='layout/admin.php?mode=delte&delete=".$ris['id']."'>[x]</a>";
 			    print "<br>";
             }
 			print $article."  ...continue";
@@ -286,7 +286,7 @@
     
     //delte_article ->
     
-    function delte_article($id)
+    function delete_article($id)
     {
         $query = "DELETE * FROM articles WHERE id = '{$id}'";
         $res   = mysql_query($query) or die ("SQL error:".mysql_error());
@@ -299,5 +299,44 @@
             print "Article not eliminated :(\n";
         }
     }
+    
+    //edit ->
+    
+    function edit($id)
+    {
+        $query = "SELECT * FROM articles WHERE id = '{$id}'";
+        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+        {
+            print "<from action = 'admin.php' method = 'POST'>";
+            print "<input type = 'text' name = 'name' value = '".$ris['name']."'><br>";
+            print "<textarea name = 'content' >".$ris['content']."</textarea><br>";
+            print "<input type = 'text' name = 'date' value = '".$ris['date']."'> <input type = 'text' name = 'hour' value = '".$ris['hour']."'>";
+            print "</from>";
+        }
+        
+        if(!empty($_POST['name']) || !empty($_POST['content']) || !empty($_POST['date']) || !empty($_POST['hour']))
+        {
+            
+            $name    = htmlentities($_POST['name']);
+            $content = htmlentities($_POST['content']);
+            $date    = htmlentities($_POST['date']);
+            $hour    = htmlentities($_POST['hour']);
+            
+            $edit   = "UPDATE * FROM articles SET name = '{$name}',content = '{$content}',date = '{$date}',hour = '{$hour}' WHERE id = '{$id}'";
+            $result = mysql_query($query) or die ("SQL error:".mysql_error());
+            if($result)
+            {
+                print "Edited articole :)\n";
+            }
+            else
+            {
+                print "Articole not edited :(\n";
+                header("Refresh: 4; URL=index.php/post-{$id}");
+            }
+            
+        }
+    }
+                      
 
 ?>

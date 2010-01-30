@@ -1,6 +1,9 @@
 <?php
 
     include('../layout/header.php');
+    
+    $edit   = $_GET['edit'];
+    $delete = $_GET['delete']; 
 
     if(is_logged() == TRUE)
     {
@@ -64,7 +67,18 @@
                 }
 
                 break;
-
+                
+                case 'edit':
+                
+                //on work
+                
+                break;
+                
+                case 'delete':
+                
+                delete_articles($delete);
+                
+                break;
                 /* default case */
                 default:
 
