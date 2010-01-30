@@ -231,6 +231,12 @@
 
 			print "<div class='article'>";
 			print "<center><a href='post-".$ris['id']."'>".$ris['name']."</a></center>";
+			if(is_admin() == TRUE)
+			{
+			    print "<a href='layout/admin.php?mode=edit&edit=".$ris['id']."'>[edit]</a> ";
+			    print "<a href='layout/admin.php?mode=delte&delte=".$ris['id']."'>[x]</a>";
+			    print "<br>";
+            }
 			print $article."  ...continue";
 			print "</div>";
 
@@ -275,6 +281,22 @@
         else
         {
             return false;
+        }
+    }
+    
+    //delte_article ->
+    
+    function delte_article($id)
+    {
+        $query = "DELETE * FROM articles WHERE id = '{$id}'";
+        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        if($res)
+        {
+            print "Rule deleted with success\n";
+        }
+        else
+        {
+            print "Article not eliminated :(\n";
         }
     }
 
