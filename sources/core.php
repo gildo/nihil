@@ -288,7 +288,7 @@
 
     function delete_article($id)
     {
-        $query = "DELETE * FROM articles WHERE id = '{$id}'";
+        $query = "DELETE FROM articles WHERE id = '{$id}'";
         $res   = mysql_query($query) or die ("SQL error:".mysql_error());
         if($res)
         {
@@ -325,7 +325,7 @@
             $hour    = htmlentities($_POST['hour']);
 
             $edit   = "UPDATE articles SET name = '{$name}',content = '{$content}',date = '{$date}',hour = '{$hour}' WHERE id = '{$id}'";
-            $result = mysql_query($query) or die ("SQL error:".mysql_error());
+            $result = mysql_query($edit) or die ("SQL error:".mysql_error());
             if($result)
             {
                 print "Edited articole :)\n";
