@@ -242,27 +242,27 @@
         if($stat >= 2)
         {
             $stat --;
-            print " <td><a href='index.php?blog=page&page=".$stat."'><= </a></td>";
+            print " <td><a href='page-".$stat."'><= </a></td>";
         }
 
 		for($c = 1; $c <= $pages; $c++)
 		{
 
-            print " <td class = 'pages'><a href = 'index.php?blog=page&page=".$c."'>".$c."</a></td>";
+            print " <td class = 'pages'><a href='page-".$c."'>".$c."</a></td>";
 
 		}
         if(end_posts($stat) == TRUE)
         {
 		    $stat ++;
-            print "     <td><a href='index.php?blog=page&page=".$stat."'> =></a></td>";
+            print "     <td><a href='page-".$stat."'> =></a></td>";
         }
         print "     </tr>";
         print "</table>";
 
 	}
-	
+
 	//end_posts ->
-	
+
 	function end_posts($id)
 	{
 	    $query = "SELECT * FROM articles WHERE id = '{$id}'";
