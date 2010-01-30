@@ -70,7 +70,7 @@
                 
                 case 'edit':
                 
-                //on work
+                edit($edit);
                 
                 break;
                 
