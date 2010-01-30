@@ -7,9 +7,9 @@
 
 
     $id   = $_GET['id'];
+    $blog = $_GET['blog'];
     $page = $_GET['page'];
     $view = $_GET['view'];
-    $blog = $_GET['blog'];
 
     if($blog == NULL && $page == NULL && $view == NULL)
     {

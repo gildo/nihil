@@ -116,8 +116,8 @@
     {
         if($id == NULL)
         {
-            //si potrebbe anche usare una query,che printerebbe l'id 1 (cioe' quello dell'home page)
-            print "Hi,this is a home page :3";
+            //home by blog :3
+            pagination();
         }
         else
         {
