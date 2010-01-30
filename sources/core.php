@@ -234,7 +234,7 @@
 			if(is_admin() == TRUE)
 			{
 			    print "<a href='admin?mode=edit&edit=".$ris['id']."'>[edit]</a> ";
-			    print "<a href='admin?mode=delte&delete=".$ris['id']."'>[x]</a>";
+			    print "<a href='admin?mode=delete&delete=".$ris['id']."'>[x]</a>";
 			    print "<br>";
             }
 			print $article."  ...continue";
@@ -324,11 +324,12 @@
             $date    = htmlentities($_POST['date']);
             $hour    = htmlentities($_POST['hour']);
 
-            $edit   = "UPDATE * FROM articles SET name = '{$name}',content = '{$content}',date = '{$date}',hour = '{$hour}' WHERE id = '{$id}'";
+            $edit   = "UPDATE articles SET name = '{$name}',content = '{$content}',date = '{$date}',hour = '{$hour}' WHERE id = '{$id}'";
             $result = mysql_query($query) or die ("SQL error:".mysql_error());
             if($result)
             {
                 print "Edited articole :)\n";
+                header("Refresh: 4; URL=index.php/post-{$id}");
             }
             else
             {
