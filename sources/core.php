@@ -233,8 +233,8 @@
 			print "<center><a href='post-".$ris['id']."'>".$ris['name']."</a></center>";
 			if(is_admin() == TRUE)
 			{
-			    print "<a href='layout/admin.php?mode=edit&edit=".$ris['id']."'>[edit]</a> ";
-			    print "<a href='layout/admin.php?mode=delte&delete=".$ris['id']."'>[x]</a>";
+			    print "<a href='admin?mode=edit&edit=".$ris['id']."'>[edit]</a> ";
+			    print "<a href='admin?mode=delte&delete=".$ris['id']."'>[x]</a>";
 			    print "<br>";
             }
 			print $article."  ...continue";
@@ -283,9 +283,9 @@
             return false;
         }
     }
-    
+
     //delte_article ->
-    
+
     function delete_article($id)
     {
         $query = "DELETE * FROM articles WHERE id = '{$id}'";
@@ -299,9 +299,9 @@
             print "Article not eliminated :(\n";
         }
     }
-    
+
     //edit ->
-    
+
     function edit($id)
     {
         $query = "SELECT * FROM articles WHERE id = '{$id}'";
@@ -315,15 +315,15 @@
             print "<input type = 'submit' value = 'edit'> <input type = 'reset' value = 'reset'>";
             print "</from>";
         }
-        
+
         if(!empty($_POST['name']) || !empty($_POST['content']) || !empty($_POST['date']) || !empty($_POST['hour']))
         {
-            
+
             $name    = htmlentities($_POST['name']);
             $content = htmlentities($_POST['content']);
             $date    = htmlentities($_POST['date']);
             $hour    = htmlentities($_POST['hour']);
-            
+
             $edit   = "UPDATE * FROM articles SET name = '{$name}',content = '{$content}',date = '{$date}',hour = '{$hour}' WHERE id = '{$id}'";
             $result = mysql_query($query) or die ("SQL error:".mysql_error());
             if($result)
@@ -335,9 +335,9 @@
                 print "Articole not edited :(\n";
                 header("Refresh: 4; URL=index.php/post-{$id}");
             }
-            
+
         }
     }
-                      
+
 
 ?>
