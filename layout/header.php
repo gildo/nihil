@@ -24,7 +24,6 @@
             <table>
                 <tr>
                     <td class = "menu1"><a href="index.php"><b>home</b></a></td>
-                    <td class = "menu1"><a href="blog"><b>blog</b></a></td>
 
         <?php
 

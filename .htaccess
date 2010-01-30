@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /NOcms
+RewriteBase /
 RewriteRule ^login NOcms/layout/login.php
 RewriteRule ^logout layout/logout.php
 RewriteRule ^admin layout/admin.php
