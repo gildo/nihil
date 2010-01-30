@@ -24,7 +24,6 @@
             <table>
                 <tr>
                     <td class = "menu1"><a href="index.php"><b>home</b></a></td> 
-                    
         <?php
 
         	if(!is_logged())
@@ -38,10 +37,10 @@
 			write_menu();
 
         ?>
-        
+
                     </tr>
             </table>
-        
+
 
         </div>
 
