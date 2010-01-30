@@ -36,7 +36,13 @@
             	print('<td class = "menu1"><a href="logout"><b>logout</b></a></td> ');
 			}
 			write_menu();
-
+            if(is_admin() == TRUE)
+            {
+                print("
+                <td class = 'menu1'><a href='admin?mode=post'><b>new post</b></a></td>
+                <td class = 'menu1'><a href='admin?mode=new_page'><b>new page</b></a></td>
+                ");
+            }
         ?>
 
                     </tr>

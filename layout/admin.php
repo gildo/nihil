@@ -1,12 +1,12 @@
 <?php
 
     error_reporting( 0 );
-    
-    
+
+
     include('../layout/header.php');
-    
+
     $edit   = $_GET['edit'];
-    $delete = $_GET['delete']; 
+    $delete = $_GET['delete'];
 
     if(is_logged() == TRUE)
     {
@@ -70,17 +70,25 @@
                 }
 
                 break;
-                
+
                 case 'edit':
-                
+
                 edit($edit);
-                
+
+                case 'edit_page':
+
+                edit_page($edit);
+
                 break;
-                
+
                 case 'delete':
-                
+
                 delete_article($delete);
-                
+
+                case 'delete_page':
+
+                delete_page($delete);
+
                 break;
                 /* default case */
                 default:

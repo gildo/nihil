@@ -126,7 +126,14 @@
 
             while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
             {
+           		if(is_admin() == TRUE)
+            		{
+            		    print "<a href='admin?mode=edit_page&edit=".$ris['id']."'>[edit]</a> ";
+            		    print "<a href='admin?mode=delete&delete=".$ris['id']."'>[x]</a>";
+            		    print "<br>";
+                    }
             print $ris['content'];
+
             }
         }
     }
@@ -245,6 +252,7 @@
         $stat = (int) $_GET['page'];
         print "<table>";
         print "     <tr>";
+
         if($stat >= 2)
         {
             $stat --;
@@ -257,6 +265,7 @@
             print " <td class = 'pages'><a href='page-".$c."'>".$c."</a></td>";
 
 		}
+
         if(end_posts($stat) == TRUE)
         {
 		    $stat ++;
@@ -300,6 +309,21 @@
         }
     }
 
+    //delte_article ->
+    function delete_page($id)
+    {
+        $query = "DELETE FROM pages WHERE id = '{$id}'";
+        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        if($res)
+        {
+            print "Page deleted with success\n";
+        }
+        else
+        {
+            print "Error deleting page :(\n";
+        }
+    }
+
     //edit ->
 
     function edit($id)
@@ -340,5 +364,40 @@
         }
     }
 
+    function edit_page($id)
+    {
+        $query = "SELECT * FROM pages WHERE id = '{$id}'";
+        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+        {
+            print "<form action = 'admin.php?mode=edit&edit={$id}' method = 'POST'>";
+            print "<input type = 'text' name = 'name' value = '".$ris['name']."'><br>";
+            print "<textarea name = 'content' >".$ris['content']."</textarea><br>";
+            print "<input type = 'submit' value = 'edit'> <input type = 'reset' value = 'reset'>";
+            print "</form>";
+        }
+
+        if(!empty($_POST['name']) || !empty($_POST['content']))
+        {
+
+            $name    = htmlentities($_POST['name']);
+            $content = htmlentities($_POST['content']);
+
+
+            $edit   = "UPDATE pages SET name = '{$name}',content = '{$content}' WHERE id = '{$id}'";
+            $result = mysql_query($edit) or die ("SQL error:".mysql_error());
+            if($result)
+            {
+                print "Edited articole :)\n";
+                header("Refresh: 4; URL={$id}");
+            }
+            else
+            {
+                print "Articole not edited :(\n";
+                header("Refresh: 4; URL={$id}");
+            }
+
+        }
+    }
 
 ?>
