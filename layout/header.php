@@ -23,7 +23,12 @@
         <div class="menu">
             <table>
                 <tr>
+<<<<<<< HEAD:layout/header.php
                     <td class = "menu1"><a href="index.php"><b>home</b></a></td> 
+=======
+                    <td class = "menu1"><a href="index.php"><b>home</b></a></td>
+
+>>>>>>> 7210bcbf8fb75a17fffe750a324bb11f5bc53c81:layout/header.php
         <?php
 
         	if(!is_logged())
