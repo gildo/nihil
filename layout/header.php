@@ -16,7 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-	    <link rel="stylesheet" type="text/css" href="layout/style.css">
+        <link rel="stylesheet" type="text/css" href="layout/style.css">
         <font size="20px"><?php echo $title; ?></font><br>
         <br><br>
         <!-- qui dobbiamo mettere le pagine presenti nella tabella pages -->
@@ -27,15 +27,15 @@
 
         <?php
 
-        	if(!is_logged())
-        	{
-            	print('<td class = "menu1"><a href="login"><b>login</b></a></td> ');
-        	}
-        	else
-        	{
-            	print('<td class = "menu1"><a href="logout"><b>logout</b></a></td> ');
-			}
-			write_menu();
+            if(!is_logged())
+            {
+                print('<td class = "menu1"><a href="login"><b>login</b></a></td> ');
+            }
+            else
+            {
+                print('<td class = "menu1"><a href="logout"><b>logout</b></a></td> ');
+            }
+            write_menu();
             if(is_admin() == TRUE)
             {
                 print("
