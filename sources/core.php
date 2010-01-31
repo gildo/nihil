@@ -316,7 +316,7 @@
         $res   = mysql_query($query) or die ("SQL error:".mysql_error());
         if($res)
         {
-            print "Rule deleted with success\n";
+            print "Article deleted with success\n";
         }
         else
         {

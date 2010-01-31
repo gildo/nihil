@@ -39,8 +39,10 @@
             if(is_admin() == TRUE)
             {
                 print("
+            <div class='menu'>
                 <td class = 'menu1'><a href='admin?mode=post'><b>new post</b></a></td>
                 <td class = 'menu1'><a href='admin?mode=new_page'><b>new page</b></a></td>
+            </div>
                 ");
             }
         ?>
