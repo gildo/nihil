@@ -198,7 +198,7 @@
             print "<div class='articles'>";
             print "<center><h3><b>".$ris['name']."</b></h3></center><br>";
             print $ris['content']."<br>";
-            print "<p align='right'>Posted by <i>".$ris['author']."</i> :: ".$ris['date']." at ".$ris['hour']."</p>";
+            print "<p align='right'>Posted by <b>".$ris['author']."</b> :: ".$ris['date']." at ".$ris['hour']."</p>";
             print "</div>";
 
         }
