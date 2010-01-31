@@ -1,5 +1,16 @@
 <?php
 
+    error_reporting(0);
+
+    function clearRequest ($request)
+    {
+    	if (isset ($_REQUEST [$request]))
+    	{
+    		$var = mysql_real_escape_string (htmlentities ($_REQUEST [$request]));
+    		return $var;
+    	}
+    }
+
     //login ->
 
     function login($username,$password){
@@ -27,13 +38,15 @@
             {
                    print "Login lates with success,hi admin";
                    setcookie('biscotto',$password,time()+2000,'/');
+                   header("Location: index.php");
             }
         }
     }
 
     //is_admin ->
 
-    function is_admin(){
+    function is_admin()
+    {
 
 		$biscotto = $_COOKIE['biscotto'];
         $query    = "SELECT * FROM users WHERE password = '{$biscotto}' AND level = 'admin'";
@@ -44,6 +57,7 @@
         {
             return false;
         }
+
         else
         {
             return true;
@@ -126,7 +140,14 @@
 
             while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
             {
+           		if(is_admin() == TRUE)
+            		{
+            		    print "<a href='admin?mode=edit_page&edit=".$ris['id']."'>[edit]</a> ";
+            		    print "<a href='admin?mode=delete_page&delete=".$ris['id']."'>[x]</a>";
+            		    print "<br>";
+                    }
             print $ris['content'];
+
             }
         }
     }
@@ -151,13 +172,14 @@
 
     function post($author,$name,$content,$hour,$date)
     {
-        $query = "INSERT INTO articles(author,name,content,hour,date,id) VALUES ('$author','$name','$content','$hour','$date','')";
+        $query = "INSERT INTO articles(author,name,content,hour,date) VALUES ('$author','$name','$content','$hour','$date')";
         $res   = mysql_query ($query) or die ("Errore nell'esecuzione della query: ".mysql_error());
 
     	if($res)
     	{
     		print "Post inserted with success :D\n";
 		}
+
 		else
 		{
 			print "NOOO!!!, error :( :(\n";
@@ -237,7 +259,7 @@
 			    print "<a href='admin?mode=delete&delete=".$ris['id']."'>[x]</a>";
 			    print "<br>";
             }
-			print $article."  ...continue";
+			print $article;
 			print "</div>";
 
 
@@ -245,6 +267,7 @@
         $stat = (int) $_GET['page'];
         print "<table>";
         print "     <tr>";
+
         if($stat >= 2)
         {
             $stat --;
@@ -257,6 +280,7 @@
             print " <td class = 'pages'><a href='page-".$c."'>".$c."</a></td>";
 
 		}
+
         if(end_posts($stat) == TRUE)
         {
 		    $stat ++;
@@ -292,11 +316,26 @@
         $res   = mysql_query($query) or die ("SQL error:".mysql_error());
         if($res)
         {
-            print "Rule deleted with success\n";
+            print "Article deleted with success\n";
         }
         else
         {
             print "Article not eliminated :(\n";
+        }
+    }
+
+    //delte_page ->
+    function delete_page($id)
+    {
+        $query = "DELETE FROM pages WHERE id = '{$id}'";
+        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        if($res)
+        {
+            print "Page deleted with success\n";
+        }
+        else
+        {
+            print "Error deleting page :(\n";
         }
     }
 
@@ -319,10 +358,10 @@
         if(!empty($_POST['name']) || !empty($_POST['content']) || !empty($_POST['date']) || !empty($_POST['hour']))
         {
 
-            $name    = htmlentities($_POST['name']);
-            $content = htmlentities($_POST['content']);
-            $date    = htmlentities($_POST['date']);
-            $hour    = htmlentities($_POST['hour']);
+			$content = clearRequest ('content');
+			$name = clearRequest ('name');
+            $date = date ("d:m:y");
+            $hour = date ("H:i:s");
 
             $edit   = "UPDATE articles SET name = '{$name}',content = '{$content}',date = '{$date}',hour = '{$hour}' WHERE id = '{$id}'";
             $result = mysql_query($edit) or die ("SQL error:".mysql_error());
@@ -340,5 +379,128 @@
         }
     }
 
+    function edit_page($id)
+    {
+        $query = "SELECT * FROM pages WHERE id = '{$id}'";
+        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+        {
+            print "<form action = 'admin.php?mode=edit_page&edit={$id}' method = 'POST'>";
+            print "<input type = 'text' name = 'name' value = '".$ris['name']."'><br>";
+            print "<textarea name = 'content' >".$ris['content']."</textarea><br>";
+            print "<input type = 'submit' value = 'edit'> <input type = 'reset' value = 'reset'>";
+            print "</form>";
+        }
+
+        if(!empty($_POST['name']) || !empty($_POST['content']))
+        {
+
+			$content = clearRequest ('content');
+			$name    = clearRequest ('name');
+
+
+            $edit   = "UPDATE pages SET name = '{$name}',content = '{$content}' WHERE id = '{$id}'";
+            $result = mysql_query($edit) or die ("SQL error:".mysql_error());
+            if($result)
+            {
+                print "page edited :)\n";
+                header("Refresh: 2; URL={$id}");
+            }
+            else
+            {
+                print "Articole not edited :(\n";
+                header("Refresh: 4; URL={$id}");
+            }
+
+        }
+    }
+    
+    //edit_username ->
+    
+    function edit_username()
+    {
+        print "<form method = 'POST' action='admin.php?mode=edit_username'>";
+        print "new username: <input type = 'text' name = 'username'><br>";
+        print "password: <input type = 'password' name = 'password'><br>";
+        print "<input type = 'submit' value = 'edit'> <input type = 'reset' value = 'reset'><br>";
+        print "</form>";
+        
+        if(!empty($_POST['username']) && !empty($_POST['password']))
+        {
+            $password = md5(sha1($_POST['password']));
+            $username = htmlentities($_POST['username']);
+            
+            $query = "SELECT * FROM users WHERE password = '{$password}'";
+            $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+            $num   = mysql_num_rows($res);
+            if($num != 1)
+            {
+                print "Wrong password\n";
+            }
+            else
+            {
+                $update = "UPDATE users SET username = '{$username}' WHERE password = '{$password}'";
+                $result = mysql_query($update) or die ("SQL error:".mysql_error());
+                if($result)
+                {
+                    print "Username changed with success";
+                }
+                else
+                {
+                    print "Amended to problems in the username";
+                }
+            }
+        }
+    }
+    
+    //edit_password ->
+    
+    function edit_password()
+    {
+        print "<form method = 'POST' action='admin.php?mode=edit_password'>";
+        print "password: <input type = 'text' name = 'password'><br>";
+        print "new password: <input type = 'password' name = 'new_password'><br>";
+        print "<input type = 'submit' value = 'edit'> <input type = 'reset' value = 'reset'><br>";
+        print "</form>";
+        
+        if(!empty($_POST['password']) && !empty($_POST['new_password']))
+        {
+            $password     = md5(sha1($_POST['password']));
+            $new_password = md5(sha1($_POST['new_password']));
+            
+            $query = "SQLECT * FROM users WHERE password = '{$password}'";
+            $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+            $num   = mysql_num_rows($res);
+            if($num != 1)
+            {
+                print "Existing user\n";
+            }
+            else
+            {
+                $update = "UPDATE users SET password = '{$new_password}' WHERE password = '{$password}'";
+                $result = mysql_query($update) or die ("SQL error:".mysql_error());
+                if($result)
+                {
+                    print "Password changed with success\n";
+                    setcookie('biscotto',$password,time()-20000,'/');
+                    setcookie('biscotto',$new_password,time()+2000,'/');
+                    if(is_logged() == TRUE)
+                    {
+                        print "setcookie ok\n";
+                    }
+                    else
+                    {
+                        print "cookie not set\n";
+                        header("Refresh: 4; URL=/login");
+                    }
+                
+                }
+                else
+                {
+                    print "Error, password not changed\n";
+                }
+            }
+        }
+    }
 
 ?>

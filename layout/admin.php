@@ -1,12 +1,12 @@
 <?php
 
     error_reporting( 0 );
-    
-    
+
+
     include('../layout/header.php');
-    
+
     $edit   = $_GET['edit'];
-    $delete = $_GET['delete']; 
+    $delete = $_GET['delete'];
 
     if(is_logged() == TRUE)
     {
@@ -29,12 +29,11 @@
 
                 if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['name']) && !empty ($_REQUEST ['content']))
                 {
-                    $author  =  $_POST['author'];
-                    $content =  $_POST['content'];
-                    $name    =  $_POST['name'];
-                    $date    =  date ("d:m:y");
-                    $hour    =  date ("H:i:s");
-
+    				$author = clearRequest ('author');
+    				$content = clearRequest ('content');
+    				$name = clearRequest ('name');
+                    $date = date ("d:m:y");
+                    $hour = date ("H:i:s");
                     post($author,$name,$content,$hour,$date);
 
                 }
@@ -57,9 +56,9 @@
 
                 if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['name']) && !empty ($_REQUEST ['content']))
                 {
-                    $author  =  $_POST['author'];
-                    $content =  $_POST['content'];
-                    $name    =  $_POST['name'];
+    				$author = clearRequest ('author');
+    				$content = clearRequest ('content');
+    				$name = clearRequest ('name');
 
                     new_page($name,$content);
 
@@ -70,16 +69,36 @@
                 }
 
                 break;
-                
+
                 case 'edit':
-                
+
                 edit($edit);
+
+                case 'edit_page':
+
+                edit_page($edit);
+
+                break;
+
+                case 'delete':
+
+                delete_article($delete);
+
+                case 'delete_page':
+
+                delete_page($delete);
+
+                break;
+                
+                case 'edit_username':
+                
+                edit_username();
                 
                 break;
                 
-                case 'delete':
+                case 'edit_password':
                 
-                delete_article($delete);
+                edit_password();
                 
                 break;
                 /* default case */

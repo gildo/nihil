@@ -1,3 +1,4 @@
+<<<<<<< HEAD:layout/style.css
 body {
 background-color:#2B2B2B;
 color:#FFFFFF;
@@ -27,37 +28,95 @@ margin:40px auto 0;
 padding:5px;
 text-align:right;
 width:50%;
+=======
+body
+{
+    background-color:#000000;
+    color:#FFFFFF;
+    font-family:Terminus,TTFminus,Fixedsys,Fixed,Terminal,Courier New,Courier;
+    font-size:12px;
+    margin:30px;
 }
-td.pages {
-background-color:#000000;
-margin:2px;
-padding:2px;
-border:1px solid #c1c1c1;
+
+div.main
+{
+    background-color:#000000;
+    border:1px solid #444444;
+    margin:10px auto 0;
+    padding:4px;
+    text-align:left;
+    width:50%;
 }
-td.menu1 {
-background-color:#000000;
-padding:2px;
-border:1px solid #444444;
+
+div.menu
+{
+    background-color:#000000;
+    font-size:12px;
+    margin:5px auto 0;
+    padding:5px;
+    text-align:center;
+    width:51%;
 }
-div.article {
-background-color:#000000;
-margin:2px;
-padding:2px;
-border-bottom:1px dotted #444444;
+
+div.footer
+{
+    background-color:#000000;
+    margin:40px auto 0;
+    padding:5px;
+    text-align:right;
+    width:50%;
+>>>>>>> f49a904436214e13ce7bd55faf45f110be46c0de:layout/style.css
 }
-a:link {
-color:#666666;
-text-decoration:none;
+
+td.pages
+{
+    background-color:#000000;
+    margin:2px;
+    padding:2px;
+    border:1px solid #c1c1c1;
 }
-a:visited {
-color:#666666;
-text-decoration:none;
+
+td.menu1
+{
+    background-color:#000000;
+    padding:2px;
+    border:1px solid #444444;
 }
+
+div.article
+{
+    background-color:#000000;
+    margin:2px;
+    padding:2px;
+    border-bottom:1px dotted #444444;
+}
+
+a:link
+{
+    color:#666666;
+    text-decoration:none;
+}
+
+a:visited
+{
+    color:#666666;
+    text-decoration:none;
+}
+<<<<<<< HEAD:layout/style.css
 a:hover {
 color:#000000;
 text-decoration:none;
+=======
+
+a:hover
+{
+    color:#ffffff;
+    text-decoration:none;
+>>>>>>> f49a904436214e13ce7bd55faf45f110be46c0de:layout/style.css
 }
-input, textarea, select {
+
+input, textarea, select
+{
 background:none repeat scroll 0 0 #000000;
 border:1px solid #666666;
 color:#FFFFFF;
