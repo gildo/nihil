@@ -1,34 +1,3 @@
-<<<<<<< HEAD:layout/style.css
-body {
-background-color:#2B2B2B;
-color:#FFFFFF;
-font-family:Terminus,TTFminus,Fixedsys,Fixed,Terminal,Courier New,Courier;
-font-size:12px;
-margin:30px;
-}
-div.main {
-background-color:#2B2B2B;
-border:1px solid #444444;
-margin:10px auto 0;
-padding:4px;
-text-align:left;
-width:50%;
-}
-div.menu {
-background-color:#2B2B2B;
-font-size:12px;
-margin:5px auto 0;
-padding:5px;
-text-align:center;
-width:51%;
-}
-div.footer {
-background-color:#2B2B2B;
-margin:40px auto 0;
-padding:5px;
-text-align:right;
-width:50%;
-=======
 body
 {
     background-color:#000000;
@@ -102,24 +71,18 @@ a:visited
     color:#666666;
     text-decoration:none;
 }
-<<<<<<< HEAD:layout/style.css
-a:hover {
-color:#000000;
-text-decoration:none;
-=======
 
 a:hover
 {
     color:#ffffff;
     text-decoration:none;
->>>>>>> f49a904436214e13ce7bd55faf45f110be46c0de:layout/style.css
 }
 
 input, textarea, select
 {
-background:none repeat scroll 0 0 #000000;
-border:1px solid #666666;
-color:#FFFFFF;
-font-family:Terminus,TTFminus,Fixedsys,Fixed,Terminal,Courier New,Courier;
-font-size:9pt;
+    background:none repeat scroll 0 0 #000000;
+    border:1px solid #666666;
+    color:#FFFFFF;
+    font-family:Terminus,TTFminus,Fixedsys,Fixed,Terminal,Courier New,Courier;
+    font-size:9pt;
 }
