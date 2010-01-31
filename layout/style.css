@@ -1,12 +1,12 @@
 body {
-background-color:#000000;
+background-color:#2B2B2B;
 color:#FFFFFF;
 font-family:Terminus,TTFminus,Fixedsys,Fixed,Terminal,Courier New,Courier;
 font-size:12px;
 margin:30px;
 }
 div.main {
-background-color:#000000;
+background-color:#2B2B2B;
 border:1px solid #444444;
 margin:10px auto 0;
 padding:4px;
@@ -14,7 +14,7 @@ text-align:left;
 width:50%;
 }
 div.menu {
-background-color:#000000;
+background-color:#2B2B2B;
 font-size:12px;
 margin:5px auto 0;
 padding:5px;
@@ -22,7 +22,7 @@ text-align:center;
 width:51%;
 }
 div.footer {
-background-color:#000000;
+background-color:#2B2B2B;
 margin:40px auto 0;
 padding:5px;
 text-align:right;
@@ -54,7 +54,7 @@ color:#666666;
 text-decoration:none;
 }
 a:hover {
-color:#ffffff;
+color:#000000;
 text-decoration:none;
 }
 input, textarea, select {

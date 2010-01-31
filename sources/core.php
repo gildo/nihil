@@ -329,12 +329,12 @@
             if($result)
             {
                 print "Edited articole :)\n";
-                header("Refresh: 4; URL=index.php/post-{$id}");
+                header("Refresh: 4; URL=post-{$id}");
             }
             else
             {
                 print "Articole not edited :(\n";
-                header("Refresh: 4; URL=index.php/post-{$id}");
+                header("Refresh: 4; URL=post-{$id}");
             }
 
         }
