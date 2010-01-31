@@ -29,12 +29,11 @@
 
                 if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['name']) && !empty ($_REQUEST ['content']))
                 {
-                    $author  =  $_POST['author'];
-                    $content =  $_POST['content'];
-                    $name    =  $_POST['name'];
-                    $date    =  date ("d:m:y");
-                    $hour    =  date ("H:i:s");
-
+    				$author = clearRequest ('author');
+    				$content = clearRequest ('content');
+    				$name = clearRequest ('name');
+                    $date = date ("d:m:y");
+                    $hour = date ("H:i:s");
                     post($author,$name,$content,$hour,$date);
 
                 }
@@ -57,9 +56,9 @@
 
                 if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['name']) && !empty ($_REQUEST ['content']))
                 {
-                    $author  =  $_POST['author'];
-                    $content =  $_POST['content'];
-                    $name    =  $_POST['name'];
+    				$author = clearRequest ('author');
+    				$content = clearRequest ('content');
+    				$name = clearRequest ('name');
 
                     new_page($name,$content);
 

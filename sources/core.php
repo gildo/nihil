@@ -1,5 +1,16 @@
 <?php
 
+    error_reporting(0);
+
+    function clearRequest ($request)
+    {
+    	if (isset ($_REQUEST [$request]))
+    	{
+    		$var = mysql_real_escape_string (htmlentities ($_REQUEST [$request]));
+    		return $var;
+    	}
+    }
+
     //login ->
 
     function login($username,$password){
@@ -27,13 +38,15 @@
             {
                    print "Login lates with success,hi admin";
                    setcookie('biscotto',$password,time()+2000,'/');
+                   header("Location: index.php");
             }
         }
     }
 
     //is_admin ->
 
-    function is_admin(){
+    function is_admin()
+    {
 
 		$biscotto = $_COOKIE['biscotto'];
         $query    = "SELECT * FROM users WHERE password = '{$biscotto}' AND level = 'admin'";
@@ -44,6 +57,7 @@
         {
             return false;
         }
+
         else
         {
             return true;
@@ -158,13 +172,14 @@
 
     function post($author,$name,$content,$hour,$date)
     {
-        $query = "INSERT INTO articles(author,name,content,hour,date,id) VALUES ('$author','$name','$content','$hour','$date','')";
+        $query = "INSERT INTO articles(author,name,content,hour,date) VALUES ('$author','$name','$content','$hour','$date')";
         $res   = mysql_query ($query) or die ("Errore nell'esecuzione della query: ".mysql_error());
 
     	if($res)
     	{
     		print "Post inserted with success :D\n";
 		}
+
 		else
 		{
 			print "NOOO!!!, error :( :(\n";
@@ -343,10 +358,10 @@
         if(!empty($_POST['name']) || !empty($_POST['content']) || !empty($_POST['date']) || !empty($_POST['hour']))
         {
 
-            $name    = htmlentities($_POST['name']);
-            $content = htmlentities($_POST['content']);
-            $date    = htmlentities($_POST['date']);
-            $hour    = htmlentities($_POST['hour']);
+			$content = clearRequest ('content');
+			$name = clearRequest ('name');
+            $date = date ("d:m:y");
+            $hour = date ("H:i:s");
 
             $edit   = "UPDATE articles SET name = '{$name}',content = '{$content}',date = '{$date}',hour = '{$hour}' WHERE id = '{$id}'";
             $result = mysql_query($edit) or die ("SQL error:".mysql_error());
@@ -380,8 +395,8 @@
         if(!empty($_POST['name']) || !empty($_POST['content']))
         {
 
-            $name    = htmlentities($_POST['name']);
-            $content = htmlentities($_POST['content']);
+			$content = clearRequest ('content');
+			$name = clearRequest ('name');
 
 
             $edit   = "UPDATE pages SET name = '{$name}',content = '{$content}' WHERE id = '{$id}'";
