@@ -4,6 +4,8 @@
 
     include('../layout/header.php');
 
+    $a = new Auth();
+
     if(is_logged())
     {
         echo ("You are already logged in!!!!! <br>");
@@ -16,7 +18,8 @@
     {
         $user = htmlentities($_POST['user']);
         $pass = htmlentities($_POST['pass']);
-        login ($user, $pass);
+        $passa = md5(sha1($pass));
+        $a->login ($user, $passa);
     }
 
     /* .. if not ... */

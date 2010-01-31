@@ -1,6 +1,6 @@
 <?php
 
-	mysql_close($connect);
+	$db->close();
 
 ?>
         </div>
