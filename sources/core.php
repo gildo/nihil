@@ -468,7 +468,7 @@
             $password     = md5(sha1($_POST['password']));
             $new_password = md5(sha1($_POST['new_password']));
 
-            $query = "SQLECT * FROM users WHERE password = '{$password}'";
+            $query = "SELECT * FROM users WHERE password = '{$password}'";
             $res   = mysql_query($query) or die ("SQL error:".mysql_error());
             $num   = mysql_num_rows($res);
             if($num != 1)
