@@ -1,6 +1,6 @@
 <?php
 
-        define('ROOT_PATH', dirname(__FILE__));
+
     include_once(ROOT_PATH.'/../sources/MySQL.php');
 
     class Auth extends MySQL
@@ -52,17 +52,19 @@
 
         function is_admin()
         {
-            if(isset($_SESSION['level']))
+
+            session_start();
+
+            if($_SESSION['level'] == 'admin')
             {
-                if($_SESSION['level'] == 'admin')
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
+
+            else
+            {
+                return false;
+            }
+
         }
 
         function register($username,$password,$email,$level)
