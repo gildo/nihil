@@ -13,7 +13,7 @@
 <html>
     <head>
         <title><?php echo $title; ?></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     </head>
     <body>
         <link rel="stylesheet" type="text/css" href="layout/style.css">
