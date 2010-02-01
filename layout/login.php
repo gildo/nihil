@@ -4,9 +4,7 @@
 
     include('../layout/header.php');
 
-    $a = new Auth();
-
-    if(is_logged())
+    if($hey->is_logged())
     {
         echo ("You are already logged in!!!!! <br>");
         echo ("Return back! (or delete you're cookie ) ");
@@ -19,7 +17,7 @@
         $user = htmlentities($_POST['user']);
         $pass = htmlentities($_POST['pass']);
         $passa = md5(sha1($pass));
-        $a->login ($user, $passa);
+        $hey->login ($user, $passa);
     }
 
     /* .. if not ... */

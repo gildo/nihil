@@ -1,17 +1,19 @@
 <?php
 
-    error_reporting( 0 );
+   // error_reporting( 0 );
 
 
     include('../layout/header.php');
+    include('../sources/Blog.php');
+    $yep = new Blog();
 
     $edit   = $_GET['edit'];
     $delete = $_GET['delete'];
 
-    if(is_logged() == TRUE)
+    if($hey->is_logged() == TRUE)
     {
 
-        if(is_admin() == TRUE)
+        if($hey->is_admin() == TRUE)
         {
 
             $mode = $_GET['mode'];
@@ -34,7 +36,7 @@
     				$name = clearRequest ('name');
                     $date = date ("d:m:y");
                     $hour = date ("H:i:s");
-                    post($author,$name,$content,$hour,$date);
+                    $yep->post($author,$name,$content,$hour,$date);
 
                 }
                 else
@@ -89,17 +91,17 @@
                 delete_page($delete);
 
                 break;
-                
+
                 case 'edit_username':
-                
+
                 edit_username();
-                
+
                 break;
-                
+
                 case 'edit_password':
-                
+
                 edit_password();
-                
+
                 break;
                 /* default case */
                 default:

@@ -1,9 +1,9 @@
 <?php
 
     $host     = 'localhost';
-    $username = 'yep';
-    $password = 'yop';
-    $database = 'yip';
+    $username = 'root';
+    $password = 'gdndqd';
+    $database = 'min';
 
-    $title = "NOcms";
+    $title = 'NOcms';
 ?>

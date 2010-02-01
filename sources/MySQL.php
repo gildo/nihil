@@ -32,11 +32,10 @@
 
     	function query($sql)
     	{
-    		$this->recent_link =& $this->link;
-    		$this->sql =& $sql;
-    		$result = mysql_query($sql);
-
-    		return $result;
+            $this->sql = mysql_query($sql) or die(nl2br($sql).mysql_error());
+            global $queries;
+            $queries++;
+            return $this->sql;
     	}
 
     	function fetch_array($result)
@@ -65,7 +64,7 @@
 
     		if (function_exists('mysql_real_escape_string'))
     		{
-    			return mysql_real_escape_string($value, $this->link);
+    			return mysql_real_escape_string($value);
     		}
     		else
     		{

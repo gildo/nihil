@@ -29,7 +29,7 @@
 
         <?php
 
-        	if(!is_logged())
+        	if($hey->is_logged() == FALSE)
         	{
             	print('<td class = "menu1"><a href="login"><b>login</b></a></td> ');
         	}

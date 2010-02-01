@@ -1,5 +1,6 @@
 <?php
 
+        define('ROOT_PATH', dirname(__FILE__));
     include_once(ROOT_PATH.'/../sources/MySQL.php');
 
     class Auth extends MySQL
@@ -13,6 +14,7 @@
 
         public function login($username,$password)
         {
+            session_start();
 
             $this->sql      = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
             $this->res      = $this->query($this->sql);
@@ -25,57 +27,59 @@
                 print($this->ris);
                 $this->raise_error();
                 print "Wrong username or password\n";
+                esit;
             }
 
             else
             {
                 if($this->level != 'admin')
                 {
-                       print "Login lates with success";
-                       setcookie('biscotto',$password,time()+2000,'/');
+                    print "Login lates with success";
+
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
                 }
                 else
                 {
                    print "Login lates with success,hi admin";
-                   setcookie('biscotto',$password,time()+2000,'/');
-#                   header("Location: index.php");
+
+                   $_SESSION['username'] = $username;
+                   $_SESSION['password'] = $password;
+                   $_SESSION['level']    = $this->level;
                 }
             }
         }
 
         function is_admin()
         {
-
-    		$biscotto = $_COOKIE['biscotto'];
-            $query    = "SELECT * FROM users WHERE password = '{$biscotto}' AND level = 'admin'";
-            $res      = $this->query($query) or die ("SQL error:".mysql_error());
-            $rows     = $this->num_rows($res);
-
-            if($rows != 1)
+            if(isset($_SESSION['level']))
             {
-                return false;
-            }
-
-            else
-            {
-                return true;
+                if($_SESSION['level'] == 'admin')
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
         function register($username,$password,$email,$level)
         {
-            $password = md5(sha1($password));
-            $control  = "SELECT * FROM users WHERE password = '{$password}'";
-            $res      = $this->query($control) or die ("SQL error:".mysql_error());
-            $rows     = $this->num_rows($res);
 
-            if($rows != 1)
+            $this->control  = "SELECT * FROM users WHERE password = '{$this->password}'";
+            $this->res      = $this->query($this->control) or die ("SQL error:".mysql_error());
+            $this->rows     = $this->num_rows($this->res);
+
+            if($this->rows != 1)
             {
-                $query    = "INSERT INTO users (username,password,email,level) VALUES('$username','$password','$email','$level');";
+                $this->query    = "INSERT INTO users (username,password,email,level) VALUES('$username','$password','$email','$level');";
 
-                $res      = $this->query($query) or die ("SQL error:".mysql_error());
 
-                if ($res)
+                $this->res      = $this->query($this->query) or die ("SQL error:".mysql_error());
+
+                if ($this->res)
                 {
                     print "User registration = TRUE :), yep";
                 }
@@ -94,7 +98,7 @@
 
         function is_logged ()
         {
-            if (isset ($_COOKIE ['biscotto']))
+            if (isset ($_SESSION['username']) && $_SESSION['password'])
             {
                 return true;
             }
