@@ -54,14 +54,14 @@
         </div>
 
         <div class="main">
-        
+
         <?php
-          
+
                 if(file_exists("../install.php"))
                 {
-                    print "<span style = 'color: #FF0000;'><b>[WARNING:</span><a href = 'delete_install.php'> delete install.php</a><span style = 'color: #FF0000;'> ]</span></b>";
-                    
+                    print "<span style = 'color: #FF0000;'><b>[WARNING:</span><a href = 'layout/delete_install.php'> delete install.php</a><span style = 'color: #FF0000;'> ]</span></b>";
+
                 }
-                
+
         ?>
         <!-- ALTRA MERDA DA AGGIUNGERE QUI. (MAGARI CI METTIAMO I POSTS) -->
