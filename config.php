@@ -5,5 +5,5 @@
     $password = 'yop';
     $database = 'yip';
 
-    $title = "NOcms";
+    $title = "lulz";
 ?>
