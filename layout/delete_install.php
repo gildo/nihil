@@ -1,8 +1,8 @@
 <?php
 
-    if(file_exists(../install.php))
+    if(file_exists("../install.php"))
     {
-        unlink(../install.php);
+        unlink("../install.php");
         
         print "File was removed\n";
     }
