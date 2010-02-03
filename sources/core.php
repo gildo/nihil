@@ -1,30 +1,5 @@
 <?php
 
-    function clearRequest ($request)
-    {
-    	if (isset ($_REQUEST [$request]))
-    	{
-    		$var = mysql_real_escape_string (htmlentities ($_REQUEST [$request]));
-    		return $var;
-    	}
-    }
-
-    //login ->
-
-
-
-    //is_admin ->
-
-
-
-    //register ->
-
-
-
-    //is_login ->
-
-
-
     //write_menu ->
 
     function write_menu()
@@ -35,7 +10,7 @@
 
         while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
         {
-            print "<td class='menu1'><a href='".$ris['id']."'><b>".$ris['name']."</b></a></td>";
+            print "<td class='menu1'><a href='".$ris['name']."'><b>".$ris['name']."</b></a></td>";
         }
     }
 
@@ -43,6 +18,7 @@
 
     function write_pages($id)
     {
+        $hey = new Auth();
         if($id == NULL)
         {
             //home by blog :3
@@ -51,11 +27,11 @@
         else
         {
             $query = "SELECT * FROM pages WHERE  id = '{$id}'";
-            $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+            $res   = $hey->query($query) or die ("SQL error:".mysql_error());
 
-            while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+            while($ris = $hey->fetch_array($res))
             {
-           		if(is_admin() == TRUE)
+           		if($hey->is_admin() == TRUE)
             		{
             		    print "<a href='admin?mode=edit_page&edit=".$ris['id']."'>[edit]</a> ";
             		    print "<a href='admin?mode=delete_page&delete=".$ris['id']."'>[x]</a>";
@@ -65,40 +41,6 @@
 
             }
         }
-    }
-
-    //new_page ->
-
-    function new_page($name,$content)
-    {
-    	$query = "INSERT INTO pages (name,content) VALUES ('$name','$content')";
-    	$res   = mysql_query($query) or die ("SQL error:".mysql_error());
-    	if($res)
-    	{
-    		print "This page inserted with success :D\n";
-		}
-		else
-		{
-			print "This page is not included :(\n";
-		}
-	}
-
-	//post ->
-
-    function post($author,$name,$content,$hour,$date)
-    {
-        $query = "INSERT INTO articles(author,name,content,hour,date) VALUES ('$author','$name','$content','$hour','$date')";
-        $res   = mysql_query ($query) or die ("Errore nell'esecuzione della query: ".mysql_error());
-
-    	if($res)
-    	{
-    		print "Post inserted with success :D\n";
-		}
-
-		else
-		{
-			print "NOOO!!!, error :( :(\n";
-		}
     }
 
     //write_post ->
@@ -123,6 +65,7 @@
 
 	function pagination()
 	{
+        $hey = new Auth();
 		$query = "SELECT * FROM articles";
 		$res   = mysql_query($query) or die ("SQL error:".mysql_error());
 		$num   = mysql_num_rows($res);
@@ -168,7 +111,7 @@
 
 			print "<div class='article'>";
 			print "<center><a href='post-".$ris['id']."'>".$ris['name']."</a></center>";
-			if(is_admin() == TRUE)
+			if($hey->is_admin() == TRUE)
 			{
 			    print "<a href='admin?mode=edit&edit=".$ris['id']."'>[edit]</a> ";
 			    print "<a href='admin?mode=delete&delete=".$ris['id']."'>[x]</a>";
@@ -231,7 +174,7 @@
         $res   = mysql_query($query) or die ("SQL error:".mysql_error());
         if($res)
         {
-            print "Article deleted with success\n";
+            header("Location: index.php");
         }
         else
         {
@@ -246,7 +189,8 @@
         $res   = mysql_query($query) or die ("SQL error:".mysql_error());
         if($res)
         {
-            print "Page deleted with success\n";
+            header("Location: index.php");
+
         }
         else
         {

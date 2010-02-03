@@ -31,9 +31,9 @@
 
                 if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['name']) && !empty ($_REQUEST ['content']))
                 {
-    				$author = clearRequest ('author');
-    				$content = clearRequest ('content');
-    				$name = clearRequest ('name');
+    				$author = $hey->prepare ('author');
+    				$content = $hey->prepare ('content');
+    				$name = $hey->prepare ('name');
                     $date = date ("d:m:y");
                     $hour = date ("H:i:s");
                     $yep->post($author,$name,$content,$hour,$date);
@@ -50,19 +50,17 @@
                 case "new_page":
 
                 print "<form action = 'admin?mode=new_page' method = 'POST'>";
-                print "Author: <input type = 'text' name = 'author'><br>";
                 print "Name: <input type = 'text' name = 'name'><br>";
                 print "<textarea name = 'content' rows = '10' cols = '75'></textarea><br>";
                 print "<input type = 'submit' value = 'post'>";
                 print "</form>";
 
-                if (!empty ($_REQUEST ['author']) && !empty ($_REQUEST ['name']) && !empty ($_REQUEST ['content']))
+                if (!empty ($_REQUEST ['name']) && !empty ($_REQUEST ['content']))
                 {
-    				$author = clearRequest ('author');
-    				$content = clearRequest ('content');
-    				$name = clearRequest ('name');
+    				$content = $hey->prepare ('content');
+    				$name = $hey->prepare ('name');
 
-                    new_page($name,$content);
+                    $yep->post_page($name,$content);
 
                 }
                 else

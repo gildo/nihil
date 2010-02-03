@@ -14,7 +14,7 @@
 
         public function login($username,$password)
         {
-            session_start();
+
 
             $this->sql      = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}'";
             $this->res      = $this->query($this->sql);
@@ -52,8 +52,6 @@
 
         function is_admin()
         {
-
-            session_start();
 
             if($_SESSION['level'] == 'admin')
             {

@@ -55,6 +55,7 @@
 
     	function prepare($value, $do_like = false)
     	{
+    		$value = $_REQUEST[$value];
     		$value = stripslashes($value);
 
     		if ($do_like)
