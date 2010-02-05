@@ -10,37 +10,30 @@
 
         while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
         {
-            print "<td class='menu1'><a href='".$ris['name']."'><b>".$ris['name']."</b></a></td>";
+            print "<td class='menu1'><a href='".$ris['id']."'><b>".$ris['name']."</b></a></td>";
         }
     }
 
     //write_pages ->
 
-    function write_pages($id)
+    function write_pages($id = NULL)
     {
         $hey = new Auth();
-        if($id == NULL)
-        {
-            //home by blog :3
-            pagination();
-        }
-        else
-        {
-            $query = "SELECT * FROM pages WHERE  id = '{$id}'";
-            $res   = $hey->query($query) or die ("SQL error:".mysql_error());
+        $sql = "SELECT * FROM pages WHERE  id = '{$id}'";
+        $res   = $hey->query($sql) or $hey->raise_error();
 
-            while($ris = $hey->fetch_array($res))
-            {
-           		if($hey->is_admin() == TRUE)
-            		{
-            		    print "<a href='admin?mode=edit_page&edit=".$ris['id']."'>[edit]</a> ";
-            		    print "<a href='admin?mode=delete_page&delete=".$ris['id']."'>[x]</a>";
-            		    print "<br>";
-                    }
-            print $ris['content'];
+        while($ris = $hey->fetch_array($res))
+        {
+        		if($hey->is_admin() == TRUE)
+        		{
+        		    print "<a href='admin?mode=edit_page&edit=".$ris['id']."'>[edit]</a> ";
+        		    print "<a href='admin?mode=delete_page&delete=".$ris['id']."'>[x]</a>";
+        		    print "<br>";
+                }
+                print $ris['content'];
 
-            }
         }
+
     }
 
     //write_post ->
@@ -122,11 +115,14 @@
 
 
 		}
-        $stat = (int) $_GET['page'];
+        if(isset($_GET['page']))
+        {
+            $stat = (int) $_GET['page'];
+        }
         print "<table>";
         print "     <tr>";
 
-        if($stat >= 2)
+        if(isset($stat) && $stat >= 2)
         {
             $stat --;
             print " <td><a href='page-".$stat."'><= </a></td>";
@@ -139,7 +135,7 @@
 
 		}
 
-        if(end_posts($stat) == TRUE)
+        if(isset($stat) && end_posts($stat) == TRUE)
         {
 		    $stat ++;
             print "     <td><a href='page-".$stat."'> =></a></td>";
@@ -240,6 +236,7 @@
 
     function edit_page($id)
     {
+        $hey = new Auth();
         $query = "SELECT * FROM pages WHERE id = '{$id}'";
         $res   = mysql_query($query) or die ("SQL error:".mysql_error());
         while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
@@ -254,12 +251,12 @@
         if(!empty($_POST['name']) || !empty($_POST['content']))
         {
 
-			$content = clearRequest ('content');
-			$name    = clearRequest ('name');
+			$content = $hey->prepare ('content');
+			$name    = $hey->prepare ('name');
 
 
             $edit   = "UPDATE pages SET name = '{$name}',content = '{$content}' WHERE id = '{$id}'";
-            $result = mysql_query($edit) or die ("SQL error:".mysql_error());
+            $result = $hey->query($edit) or die ("SQL error:".mysql_error());
             if($result)
             {
                 print "page edited :)\n";

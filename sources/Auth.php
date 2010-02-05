@@ -52,17 +52,18 @@
 
         function is_admin()
         {
-
-            if($_SESSION['level'] == 'admin')
+            if(isset($_SESSION['level']))
             {
-                return true;
-            }
+                if($_SESSION['level'] == 'admin')
+                {
+                    return true;
+                }
 
-            else
-            {
-                return false;
+                else
+                {
+                    return false;
+                }
             }
-
         }
 
         function register($username,$password,$email,$level)

@@ -4,36 +4,52 @@
 
     include('layout/header.php');
 
+    if(isset($_GET['id']))
+    {
+        $id   = $_GET['id'];
+    }
+    if(isset($_GET['blog']))
+    {
+        $blog = $_GET['blog'];
+    }
+    if(isset($_GET['page']))
+    {
+        $page = $_GET['page'];
+    }
+    if(isset($_GET['view']))
+    {
+        $view = $_GET['view'];
+    }
 
-
-    $id   = $_GET['id'];
-    $blog = $_GET['blog'];
-    $page = $_GET['page'];
-    $view = $_GET['view'];
-
-    if($blog == NULL && $page == NULL && $view == NULL)
+    if(!isset($blog, $page, $view) && isset($id))
     {
         write_pages($id);
     }
+
     else
     {
 
-        switch($blog)
+        pagination();
+
+        if(isset($blog))
         {
-            case 'page':
+            switch($blog)
+            {
+                case 'page':
 
-            pagination();
+                pagination();
 
-            break;
+                break;
 
-            case 'view':
+                case 'view':
 
-            write_post($view);
+                write_post($view);
 
-            break;
+                break;
+
+            }
 
         }
-
     }
 
     include('layout/footer.php');

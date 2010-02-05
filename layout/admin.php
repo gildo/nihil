@@ -7,8 +7,14 @@
     include('../sources/Blog.php');
     $yep = new Blog();
 
-    $edit   = $_GET['edit'];
-    $delete = $_GET['delete'];
+    if(isset($_GET['edit']))
+    {
+        $edit   = $_GET['edit'];
+    }
+    if(isset($_GET['delete']))
+    {
+        $delete = $_GET['delete'];
+    }
 
     if($hey->is_logged() == TRUE)
     {
