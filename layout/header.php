@@ -35,6 +35,5 @@
             </tr>
     </table>
 
-
-
-<div class="main">
+    <div class="main">
+    <!--END -->

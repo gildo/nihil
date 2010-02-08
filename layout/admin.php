@@ -120,14 +120,14 @@
         else
         {
             print "Not have permission to view these pages :@";
-            header("Refresh: 4; URL=index.php");
+            header("Refresh: 2; URL=index.php");
         }
 
     }
     else
     {
         print "Not logged";
-        header("Refresh: 4; URL=login");
+        header("Refresh: 2; URL=login");
     }
 
     include('../layout/footer.php');

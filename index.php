@@ -1,6 +1,6 @@
 <?php
 
-    //error_reporting( 0 );
+    error_reporting( 0 );
 
     include('layout/header.php');
 
@@ -21,16 +21,13 @@
         $view = $_GET['view'];
     }
 
-    if(!isset($blog, $page, $view) && isset($id))
+    if($blog == NULL && $page == NULL && $view == NULL)
     {
         write_pages($id);
     }
 
     else
     {
-
-        pagination();
-
         if(isset($blog))
         {
             switch($blog)
@@ -48,7 +45,6 @@
                 break;
 
             }
-
         }
     }
 

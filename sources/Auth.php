@@ -6,11 +6,11 @@
     class Auth extends MySQL
     {
 
-        var $username;
-        var $password;
-        var $res;
-        var $rows;
-        var $level;
+        public $username;
+        public $password;
+        public $res;
+        public $rows;
+        public $level;
 
         public function login($username,$password)
         {

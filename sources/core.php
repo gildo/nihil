@@ -4,11 +4,12 @@
 
     function write_menu()
     {
+        $hey = new Auth();
         $query = "SELECT * FROM pages";
-        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        $res   = $hey->query($query) or die ("SQL error:".$hey->error());
 
 
-        while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+        while($ris = $hey->fetch_array($res))
         {
             print "<td class='menu1'><a href='".$ris['id']."'><b>".$ris['name']."</b></a></td>";
         }
@@ -16,34 +17,42 @@
 
     //write_pages ->
 
-    function write_pages($id = NULL)
+    function write_pages($id)
     {
         $hey = new Auth();
-        $sql = "SELECT * FROM pages WHERE  id = '{$id}'";
-        $res   = $hey->query($sql) or $hey->raise_error();
-
-        while($ris = $hey->fetch_array($res))
+        if($id == NULL)
         {
-        		if($hey->is_admin() == TRUE)
-        		{
-        		    print "<a href='admin?mode=edit_page&edit=".$ris['id']."'>[edit]</a> ";
-        		    print "<a href='admin?mode=delete_page&delete=".$ris['id']."'>[x]</a>";
-        		    print "<br>";
-                }
-                print $ris['content'];
-
+            //home by blog :3
+            pagination();
         }
+        else
+        {
+            $query = "SELECT * FROM pages WHERE  id = '{$id}'";
+            $res   = $hey->query($query) or die ("SQL error:".$hey->error());
 
+            while($ris = $hey->fetch_array($res))
+            {
+                   if($hey->is_admin() == TRUE)
+                    {
+                        print "<a href='admin?mode=edit_page&edit=".$ris['id']."'>[edit]</a> ";
+                        print "<a href='admin?mode=delete_page&delete=".$ris['id']."'>[x]</a>";
+                        print "<br>";
+                    }
+            print $ris['content'];
+
+            }
+        }
     }
 
     //write_post ->
 
 	function write_post($id)
 	{
+        $hey = new Auth();
 		$query = "SELECT * FROM articles WHERE id = '{$id}'";
-		$res   = mysql_query($query) or die ("SQL error:".mysql_error());
+		$res   = $hey->query($query) or die ("SQL error:".$hey->error());
 
-		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+		while($ris = $hey->fetch_array($res))
 		{
 			print "<div class='articles'>";
 			print "<center><h3><b>".$ris['name']."</b></h3></center><br>";
@@ -60,8 +69,8 @@
 	{
         $hey = new Auth();
 		$query = "SELECT * FROM articles";
-		$res   = mysql_query($query) or die ("SQL error:".mysql_error());
-		$num   = mysql_num_rows($res);
+		$res   = $hey->query($query) or die ("SQL error:".$hey->error());
+		$num   = $hey->num_rows($res);
 
 		if($num % 5 > 0)
 		{
@@ -85,9 +94,9 @@
 		}
 
 		$print = "SELECT * FROM articles ORDER BY id DESC LIMIT {$from},{$to}";
-		$res   = mysql_query ($print) or die ("SQL error:".mysql_error());
+		$res   = $hey->query ($print) or $hey->raise_error();
 
-		while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+		while($ris = $hey->fetch_array($res))
 		{
 			$article = "";
 			$size    = strlen($ris['content']);
@@ -150,8 +159,8 @@
 	function end_posts($id)
 	{
 	    $query = "SELECT * FROM articles WHERE id = '{$id}'";
-	    $res   = mysql_query($query) or die ("SQL error:".mysql_error());
-	    $num   = mysql_num_rows($res);
+	    $res   = $hey->query($query) or $hey->raise_error();
+	    $num   = $hey->num_rows($res);
 	    if($num == 1)
 	    {
 	        return true;
@@ -166,8 +175,9 @@
 
     function delete_article($id)
     {
+        $hey = new Auth();
         $query = "DELETE FROM articles WHERE id = '{$id}'";
-        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        $res   = $hey->query($query) or $hey->raise_error();
         if($res)
         {
             header("Location: index.php");
@@ -181,8 +191,9 @@
     //delte_page ->
     function delete_page($id)
     {
+        $hey = new Auth();
         $query = "DELETE FROM pages WHERE id = '{$id}'";
-        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
+        $res   = $hey->query($query) or $hey->raise_error();
         if($res)
         {
             header("Location: index.php");
@@ -198,9 +209,10 @@
 
     function edit($id)
     {
+        $hey = new Auth();
         $query = "SELECT * FROM articles WHERE id = '{$id}'";
-        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
-        while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+        $res   = $hey->query($query) or $hey->raise_error();
+        while($ris = $hey->fetch_array($res))
         {
             print "<form action = 'admin.php?mode=edit&edit={$id}' method = 'POST'>";
             print "<input type = 'text' name = 'name' value = '".$ris['name']."'><br>";
@@ -213,22 +225,22 @@
         if(!empty($_POST['name']) || !empty($_POST['content']) || !empty($_POST['date']) || !empty($_POST['hour']))
         {
 
-			$content = clearRequest ('content');
-			$name = clearRequest ('name');
+			$content = $hey->prepare ('content');
+			$name = $hey->prepare ('name');
             $date = date ("d:m:y");
             $hour = date ("H:i:s");
 
             $edit   = "UPDATE articles SET name = '{$name}',content = '{$content}',date = '{$date}',hour = '{$hour}' WHERE id = '{$id}'";
-            $result = mysql_query($edit) or die ("SQL error:".mysql_error());
+            $result = $hey->query($edit) or $hey->raise_error();
             if($result)
             {
                 print "Edited articole :)\n";
-                header("Refresh: 4; URL=post-{$id}");
+                header("Refresh: 2; URL=post-{$id}");
             }
             else
             {
                 print "Articole not edited :(\n";
-                header("Refresh: 4; URL=post-{$id}");
+                header("Refresh: 2; URL=post-{$id}");
             }
 
         }
@@ -238,8 +250,8 @@
     {
         $hey = new Auth();
         $query = "SELECT * FROM pages WHERE id = '{$id}'";
-        $res   = mysql_query($query) or die ("SQL error:".mysql_error());
-        while($ris = mysql_fetch_array($res,MYSQL_ASSOC))
+        $res   = $hey->query($query) or $hey->raise_error();
+        while($ris = $hey->fetch_array($res))
         {
             print "<form action = 'admin.php?mode=edit_page&edit={$id}' method = 'POST'>";
             print "<input type = 'text' name = 'name' value = '".$ris['name']."'><br>";
@@ -256,7 +268,7 @@
 
 
             $edit   = "UPDATE pages SET name = '{$name}',content = '{$content}' WHERE id = '{$id}'";
-            $result = $hey->query($edit) or die ("SQL error:".mysql_error());
+            $result = $hey->query($edit) or die ("SQL error:".$hey->error());
             if($result)
             {
                 print "page edited :)\n";
@@ -265,7 +277,7 @@
             else
             {
                 print "Articole not edited :(\n";
-                header("Refresh: 4; URL={$id}");
+                header("Refresh: 2; URL={$id}");
             }
 
         }
@@ -287,8 +299,8 @@
             $username = htmlentities($_POST['username']);
 
             $query = "SELECT * FROM users WHERE password = '{$password}'";
-            $res   = mysql_query($query) or die ("SQL error:".mysql_error());
-            $num   = mysql_num_rows($res);
+            $res   = $hey->query($query) or die ("SQL error:".$hey->error());
+            $num   = $hey->num_rows($res);
             if($num != 1)
             {
                 print "Wrong password\n";
@@ -296,7 +308,7 @@
             else
             {
                 $update = "UPDATE users SET username = '{$username}' WHERE password = '{$password}'";
-                $result = mysql_query($update) or die ("SQL error:".mysql_error());
+                $result = $hey->query($update) or $hey->raise_error();
                 if($result)
                 {
                     print "Username changed with success";
@@ -325,8 +337,8 @@
             $new_password = md5(sha1($_POST['new_password']));
 
             $query = "SQLECT * FROM users WHERE password = '{$password}'";
-            $res   = mysql_query($query) or die ("SQL error:".mysql_error());
-            $num   = mysql_num_rows($res);
+            $res   = $hey->query($query) or $hey->raise_error();
+            $num   = $hey->num_rows($res);
             if($num != 1)
             {
                 print "Existing user\n";
@@ -334,7 +346,7 @@
             else
             {
                 $update = "UPDATE users SET password = '{$new_password}' WHERE password = '{$password}'";
-                $result = mysql_query($update) or die ("SQL error:".mysql_error());
+                $result = $hey->query($update) or $hey->raise_error();
                 if($result)
                 {
                     print "Password changed with success\n";
@@ -347,7 +359,7 @@
                     else
                     {
                         print "cookie not set\n";
-                        header("Refresh: 4; URL=/login");
+                        header("Refresh: 2; URL=/login");
                     }
 
                 }
