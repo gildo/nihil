@@ -38,7 +38,7 @@
                         print "<a href='admin?mode=delete_page&delete=".$ris['id']."'>[x]</a>";
                         print "<br>";
                     }
-            print $ris['content'];
+            print nl2br($ris['content']);
 
             }
         }
@@ -55,8 +55,8 @@
 		while($ris = $hey->fetch_array($res))
 		{
 			print "<div class='articles'>";
-			print "<center><h3><b>".$ris['name']."</b></h3></center><br>";
-			print $ris['content']."<br>";
+			print "<center><b>".$ris['name']."</b></center><br>";
+			print nl2br($ris['content'])."<br>";
 			print "<p align='right'>Posted by <i>".$ris['author']."</i> :: ".$ris['date']." at ".$ris['hour']."</p>";
 			print "</div>";
 
@@ -98,29 +98,16 @@
 
 		while($ris = $hey->fetch_array($res))
 		{
-			$article = "";
-			$size    = strlen($ris['content']);
-
-			if($size > 200)
-			{
-				$size = 200;
-			}
-
-			for($i = 0;$i < $size; $i++)
-			{
-				$article .= $ris['content'][$i];
-			}
-
 			print "<div class='article'>";
-			print "<center><a href='post-".$ris['id']."'>".$ris['name']."</a></center>";
+			print "<center><a href='post-".$ris['id']."'>".$ris['name']."</a></center><br>";
 			if($hey->is_admin() == TRUE)
 			{
 			    print "<a href='admin?mode=edit&edit=".$ris['id']."'>[edit]</a> ";
 			    print "<a href='admin?mode=delete&delete=".$ris['id']."'>[x]</a>";
 			    print "<br>";
             }
-			print $article;
-			print "</div>";
+			print nl2br($ris['content']);
+            print "</div>";
 
 
 		}

@@ -9,6 +9,6 @@
         <font size="20px"><?php echo $title; ?></font><br>
         <br><br>
         <div class="menu">
-            <table>
+            <table class = "link1">
                 <tr>
                     <td class = "menu1"><a href="index.php"><b>home</b></a></td>
