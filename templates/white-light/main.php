@@ -6,7 +6,7 @@
     </head>
     <body>
 	    <link rel="stylesheet" type="text/css" href="templates/white-light/style.css">
-        <font size="20px"><?php echo $title; ?></font><br>
+        <div class = "title"><?php echo $title; ?></div>
         <br><br>
         <div class="menu">
             <table class = "menu1">
