@@ -57,6 +57,7 @@ div.article
     margin:2px;
     padding:2px;
     border-bottom:1px dotted #444444;
+    word-wrap: break-word;
 }
 
 a:link

@@ -59,6 +59,7 @@ div.article
 	margin:0px auto;
     padding:5px;
 	border-bottom:1px dotted #ABABAB;
+	word-wrap: break-word;
 }
 table.menu1
 {
