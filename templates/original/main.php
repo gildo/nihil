@@ -2,12 +2,13 @@
 <html>
     <head>
         <title><?php echo $title; ?></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     </head>
     <body>
-	    <link rel="stylesheet" type="text/css" href="templates/original/style.css">
+        <link rel="stylesheet" type="text/css" href="templates/original/style.css">
         <font size="20px"><?php echo $title; ?></font><br>
         <br><br>
+        <!-- qui dobbiamo mettere le pagine presenti nella tabella pages -->
         <div class="menu">
             <table>
                 <tr>

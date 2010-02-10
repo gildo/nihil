@@ -55,7 +55,7 @@
 		while($ris = $hey->fetch_array($res))
 		{
 			print "<div class='articles'>";
-			print "<center><b>".$ris['name']."</b></center><br>";
+			print "<center><h3><b>".$ris['name']."</b></h3></center><br>";
 			print nl2br($ris['content'])."<br>";
 			print "<p align='right'>Posted by <i>".$ris['author']."</i> :: ".$ris['date']." at ".$ris['hour']."</p>";
 			print "</div>";
