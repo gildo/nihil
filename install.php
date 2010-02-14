@@ -1,5 +1,7 @@
 <?php
 
+    error_reporting( 0 );
+
     if (!file_exists('config.php')) {
         die("<p>The file 'config.php' not exists.</p></body></html>"); }
 
@@ -9,7 +11,7 @@
     $db = new MySQL();
     $db->connect($host,$username,$password,$database);
     $hey = new Auth();
-
+    print("HELO, go to install.php?mode=install\n");
 
     $mode = $_GET['mode'];
     switch($mode)
@@ -80,6 +82,20 @@
             	PRIMARY KEY (`id`)
         );
     ");
+
+    $db->query("
+        CREATE TABLE `comments` (
+            `comment` TEXT NOT NULL,
+            `author` TEXT NOT NULL,
+            `date` TEXT NOT NULL,
+            `hour` TEXT NOT NULL,
+            `id` INT (11) NOT NULL AUTO_INCREMENT,
+            	PRIMARY KEY (`id`)
+        );
+    ");
+
+    print("installed, go to install.php?mode=register\n");
+
     break;
 
     }
