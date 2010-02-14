@@ -50,8 +50,8 @@
             print nl2br($ris['content'])."<br>";
             print "<p align='right'>Posted by <i>".$ris['author']."</i> :: ".$ris['date']." at ".$ris['hour']."</p>";
             print "</div>";
-            print "<a href = '#comments' onclick = 'javascript: spoil (\"comment\");'>view comments</a>";
-            print "<div id='comment'>";
+            print "<a href = '#comment' onclick = 'javascript: spoil (\"comment\");'>view comments</a>";
+            print "<div id = 'comment'>";
             
             //print and insert comment
             $query2 = "SELECT * FROM comments WHERE id = '{$id}'";
