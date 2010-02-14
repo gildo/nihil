@@ -55,7 +55,7 @@
             
             //print and insert comment
             $query2 = "SELECT * FROM comments WHERE id = '{$id}'";
-            $res2   = $hey->query($query) or die ("SQL error:".$hey->error());
+            $res2   = $hey->query($query2) or die ("SQL error:".$hey->error());
             
             while($ris2 = $hey->fetch_array($res)){
                 print "<div class = 'comments'>";
