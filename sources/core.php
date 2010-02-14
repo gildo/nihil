@@ -86,7 +86,7 @@
 
         while($ris = $hey->fetch_array($res)) {
             print "<div class='article'>";
-            print "<center><a href='post-".$ris['id']."'>".$ris['name']."</a></center><br>";
+            print "<center><div class=title><a href='post-".$ris['id']."'>".$ris['name']."</a></div></center><br>";
 
             if($hey->is_admin() == TRUE) {
                 print "<a href='admin?mode=edit&edit=".$ris['id']."'>[edit]</a> ";
