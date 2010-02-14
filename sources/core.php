@@ -63,7 +63,7 @@
                 print "<p align = 'right'>by <i>".$ris['author']."</i></p>";
                 print "</div>";
             }
-            comment();
+            comment($id);
             
             print "</div>";
 
@@ -338,6 +338,36 @@
                 else {
                     print "Error, password not changed\n";
                 }
+            }
+        }
+    }
+
+    function comment($id) {
+        
+        print "<from method = 'POST' action = ''>";
+        print "Author: <input type = 'text' name = 'author'><br>";
+        print "Comment: <textarea name = 'comment'></textarea><br>";
+        print "<input type = 'submit' value = 'insert'> <input type = 'reset' value = 'reset'><br>";
+        print "</from>";
+        
+        if(!empty($_POST['author']) && !empty($_POST['comment'])) {
+            $author  = htmlentities($_POST['author']);
+            $comment = htmlentities($_POST['comment']);
+            
+            $hey   = new Auth();
+            $query = "INSERT INTO comment (author,comment,id) VAULES ('$author','$comment','$id')";
+            $res   = $hey->query($query) or $hey->raise_error();
+            
+            if($res) {
+                   
+                print "comment inserted with success\n";
+                header("Refresh: 2; URL={$id}");
+            
+            }else{
+            
+                print "comment is not included\n";
+                header("Refresh: 2; URL={$id}");
+        
             }
         }
     }
