@@ -1,3 +1,4 @@
+<script type="text/javascript" src="sources/core.js"></script>
 <?php
 
     define('ROOT_PATH', dirname(__FILE__));
