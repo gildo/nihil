@@ -50,6 +50,22 @@
             print nl2br($ris['content'])."<br>";
             print "<p align='right'>Posted by <i>".$ris['author']."</i> :: ".$ris['date']." at ".$ris['hour']."</p>";
             print "</div>";
+            print "<a href = '#comments' onclick = 'javascript: spoil (\"comment\");'>view comments</a>";
+            print "<div class='comment'>";
+            
+            //print and insert comment
+            $query2 = "SELECT * FROM comments WHERE id = '{$id}'";
+            $res2   = $hey->query($query) or die ("SQL error:".$hey->error());
+            
+            while($ris2 = $hey->fetch_array($res)){
+                print "<div class = 'comments'>";
+                print nl2br($ris['comment'])."<br>";
+                print "<p align = 'right'>by <i>".$ris['author']."</i></p>";
+                print "</div>";
+            }
+            comment();
+            
+            print "</div>";
 
         }
     }
