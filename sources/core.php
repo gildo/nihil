@@ -51,7 +51,7 @@
             print "<p align='right'>Posted by <i>".$ris['author']."</i> :: ".$ris['date']." at ".$ris['hour']."</p>";
             print "</div>";
             print "<a href = '#comment' onclick = 'javascript: spoil (\"comment\");'>view comments</a>";
-            print "<div id = 'comment'>";
+            print "<div id = 'comment'  style = 'display: none'>";
             
             //print and insert comment
             $query2 = "SELECT * FROM comments WHERE id = '{$id}'";
