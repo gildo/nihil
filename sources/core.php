@@ -58,8 +58,8 @@
 
             while($ris2 = $hey->fetch_array($res)){
                 print "<div class = 'comments'>";
-                print nl2br($ris['comment'])."<br>";
-                print "<p align = 'right'>by <i>".$ris['author']."</i></p>";
+                print nl2br($ris2['comment'])."<br>";
+                print "<p align = 'right'>by <i>".$ris2['author']."</i></p>";
                 print "</div>";
             }
             comment($id);
