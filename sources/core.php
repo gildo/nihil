@@ -343,7 +343,7 @@
 
     function comment($id) {
 
-        print "<form method = 'POST' action = 'index.php'>";
+        print "<form method = 'POST' action = ''>";
         print "Author: <input type = 'text' name = 'author'><br>";
         print "Comment: <textarea name = 'comment'></textarea><br>";
         print "<input type = 'submit' value = 'insert'> <input type = 'reset' value = 'reset'><br>";
