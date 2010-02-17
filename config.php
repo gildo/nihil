@@ -2,8 +2,8 @@
 
     $host     = 'localhost';
     $username = 'root';
-    $password = 'gdndqd';
+    $password = 'gqd';
     $database = 'min';
-
-    $title = 'NOcms';
+    $template = 'original';
+    $title    = 'nihil';
 ?>
