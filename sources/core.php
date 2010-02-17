@@ -342,13 +342,15 @@
     }
 
     function comment($id) {
+?>
+<div class='comments' align='center'><br><br>
+<form method = 'POST' action = ''>
+Author<br><input type = 'text' name = 'author'><br><br>
+Comment<br><textarea name = 'comment'></textarea><br>
+<input type = 'submit' value = 'insert'> <input type = 'reset' value = 'reset'><br>
+</form></div><br>
 
-        print "<form method = 'POST' action = ''>";
-        print "Author: <input type = 'text' name = 'author'><br>";
-        print "Comment: <textarea name = 'comment'></textarea><br>";
-        print "<input type = 'submit' value = 'insert'> <input type = 'reset' value = 'reset'><br>";
-        print "</form>";
-
+<?php
         if(!empty($_POST['author']) && !empty($_POST['comment'])) {
             $hey   = new MySQL();
             $author  = htmlentities($_POST['author']);
