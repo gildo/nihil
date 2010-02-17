@@ -63,6 +63,12 @@ div.article
     border-bottom:1px dotted #444444;
     font-size:12px;
 }
+div.comments
+{
+    margin:2px;
+    border:1px dotted #444444;
+    padding:2px;
+}
 
 a:link
 {
