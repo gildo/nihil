@@ -52,7 +52,7 @@
             print "</div>";
             print "<a href = '#comment' onclick = 'javascript: spoil (\"comment\");'>view comments</a>";
             print "<div id = 'comment'  style = 'display: none'>";
-            //print and insert comment
+#            print and insert comment
             $query2 = "SELECT * FROM comments WHERE id = '{$id}'";
             $res2   = $hey->query($query2) or die ("SQL error:".$hey->error());
 
@@ -350,22 +350,21 @@
         print "</form>";
 
         if(!empty($_POST['author']) && !empty($_POST['comment'])) {
+            $hey   = new MySQL();
             $author  = htmlentities($_POST['author']);
             $comment = htmlentities($_POST['comment']);
-
-            $hey   = new Auth();
-            $query = "INSERT INTO comment (author,comment,id) VAULES ('$author','$comment','$id')";
+            $query = "INSERT INTO comments (author,comment,post_id) VALUES ('$author','$comment','$id');";
             $res   = $hey->query($query) or $hey->raise_error();
 
             if($res) {
 
                 print "comment inserted with success\n";
-                header("Refresh: 2; URL={$id}");
+                header("Refresh: 2; URL=post-{$id}");
 
             }else{
 
                 print "comment is not included\n";
-                header("Refresh: 2; URL={$id}");
+                header("Refresh: 2; URL=post-{$id}");
 
             }
         }

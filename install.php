@@ -89,6 +89,7 @@
             `author` TEXT NOT NULL,
             `date` TEXT NOT NULL,
             `hour` TEXT NOT NULL,
+            `post_id` INT (11) NOT NULL,
             `id` INT (11) NOT NULL AUTO_INCREMENT,
             	PRIMARY KEY (`id`)
         );

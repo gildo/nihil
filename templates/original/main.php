@@ -8,7 +8,6 @@
         <link rel="stylesheet" type="text/css" href="templates/original/style.css">
         <font size="20px"><?php echo $title; ?></font><br>
         <br><br>
-        <!-- qui dobbiamo mettere le pagine presenti nella tabella pages -->
         <div class="menu">
             <table>
                 <tr>

@@ -24,13 +24,11 @@
     else
     { /* here down: the ugliest login form ever */ ?>
 
-    <h2>login</h2>
+    <h3>login</h3>
     <form method="post" action="login">
         <table>
-        <tr><td>username :</td>
-            <td><input type="text" name="user"/></td></tr>
-        <tr><td>password :</td>
-            <td><input type="password" name="pass"/></td></tr>
+        <tr>username : <input type="text" name="user"/></tr><br>
+        <tr>password : <input type="password" name="pass"/></tr>
         <tr><td>
             <input type="submit" name="login" value="login" />
         </tr>
