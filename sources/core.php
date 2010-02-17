@@ -53,10 +53,10 @@
             print "<a href = '#comment' onclick = 'javascript: spoil (\"comment\");'>view comments</a>";
             print "<div id = 'comment'  style = 'display: none'>";
 #            print and insert comment
-            $query2 = "SELECT * FROM comments WHERE id = '{$id}'";
+            $query2 = "SELECT * FROM comments WHERE post_id = '{$id}'";
             $res2   = $hey->query($query2) or die ("SQL error:".$hey->error());
 
-            while($ris2 = $hey->fetch_array($res)){
+            while($ris2 = $hey->fetch_array($res2)){
                 print "<div class = 'comments'>";
                 print nl2br($ris2['comment'])."<br>";
                 print "<p align = 'right'>by <i>".$ris2['author']."</i></p>";
